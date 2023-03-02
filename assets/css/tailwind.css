@@ -2,9 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "GT Alpina";
+    src: url('/assets/fonts/GT-Alpina-Standard-Regular-Trial.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  .router-link-active {
+    color: blue;
+  }
+
+  
 body{
-    
+    font-family: 'GT Alpina';
+    -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: antialiased;
+	font-smoothing: antialiased;
 }
+
+html, body {
+    overscroll-behavior-y: none;
+  }
+
+.single-project .nav {
+    display: none;
+}
+
+
 
 .container{
     @apply mx-auto max-w-5xl px-10 sm:px-0;

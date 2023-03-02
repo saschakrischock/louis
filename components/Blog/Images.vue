@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 
+
 import { onBeforeRouteLeave, onBeforeRouteUpdate } from 'vue-router'
 import { ref } from 'vue'
 
@@ -12,18 +13,14 @@ gsap.registerPlugin(ScrollTrigger)
 
 
 
-function goToPrev() {
-  window.history.length > 1 ? useRouter().go(-1) : useRouter().push('/')
-}
-
 
     // same as beforeRouteLeave option with no access to `this`
     onBeforeRouteLeave((to, from) => {
      // const answer = window.confirm(
-       // 'Do you really want to leave? you have unsaved changes!'
-    //  )
+    //    'Do you really want to leave? you have unsaved changes!'
+   //   )
       // cancel the navigation and stay on the same page
-    //  if (!answer) return false
+      //if (!answer) return false
     })
 
     const userData = ref()
@@ -42,9 +39,6 @@ const params = useRoute().params;
 
 useHead({
   title: `${params.slug}`,
-  bodyAttrs: {
-        class: 'single-project'
-      },
   meta: [
     {
       name: "description",
@@ -60,13 +54,10 @@ const post = posts.value[0];
 <template>
 
 
-<div>
-  <div class="single-project-top">
-    <div @click="goToPrev">LG</div>
 
-    <div @click="goToPrev">CLOSE</div>
-  </div>
-  
+  <section v-for="image in post.acf.gallery" :key="image.gallery_item">
+  <img loading="lazy" :height="image.gallery_item.height" :width="image.gallery_item.width" :src="image.gallery_item.url" :alt="image.alt">
+  </section>
 
 
 
@@ -76,24 +67,8 @@ const post = posts.value[0];
 
       <!-- Blog Image  -->
 
-      <BlogGallery/>
 
-
-      <div class="single-project-bottom">
-        <div>{{ post.title.rendered }}</div>
-        <div class="scroll">Scroll
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<mask id="mask0_31_247" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-<rect width="24" height="24" transform="matrix(-1 0 0 1 24 0)" fill="#D9D9D9"/>
-</mask>
-<g mask="url(#mask0_31_247)">
-<path d="M12 20L20 12L12 4L10.575 5.4L16.175 11H4V13H16.175L10.575 18.6L12 20Z" fill="#1C1B1F"/>
-</g>
-</svg>
-
-        </div>
-      </div>
-    </div>
+    
 </template>
 
 <style>
@@ -103,6 +78,21 @@ const post = posts.value[0];
   opacity: 0;
 }
 
+section {
+  width: max-content;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+
+  img {
+    height: 88%;
+    width: auto;
+    object-fit: cover;
+  }
+}
+
 .page-enter-active,
 .page-leave-active {
   transition: all 0.2s;
@@ -110,38 +100,6 @@ const post = posts.value[0];
 .page-enter,
 .page-leave-to {
   opacity: 0;
-}
-
-.scroll {
-display: flex
-}
-
-.scroll svg {
-  margin-left: 0.5rem;
-}
-
-.single-project-top{
-  position: fixed;
-  width: 100vw;
-  top: 0;
-  left: 0;
-  background-color: #fff;
-  z-index: 100;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.single-project-bottom {
-  position: fixed;
-  width: 100vw;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .blog__content {

@@ -4,14 +4,14 @@ import { useWpApi } from '~~/composables/useWpApi';
  
 
 useHead({
-  title: "Home",
+  title: "Gallery",
   meta: [
     {
       name: "description",
-      content: "Home",
+      content: "Gallery",
     },
   ],
-  titleTemplate: "Elon's Blog - %s",
+  titleTemplate: "Louis - %s",
 });
 
 const { data: blogs, refresh, error } = await useWpApi().getPosts();

@@ -1,17 +1,26 @@
 <script lang="ts" setup>
 
 
- 
+
+const isHover = ref('test');
+
+console.log('object' + isHover)
+
+const updateValue = (title) => {
+  isHover.value = title;
+};
+
+
 
 useHead({
-  title: "Home",
+  title: "Overview",
   meta: [
     {
       name: "description",
-      content: "Home",
+      content: "Overview",
     },
   ],
-  titleTemplate: "Elon's Blog - %s",
+  titleTemplate: "Louis - %s",
 });
 
 const { data: blogs, refresh, error } = await useWpApi().getACF();
@@ -34,8 +43,8 @@ function resetFilter() {
 </script>
 <template>
      <div>
-        <div class="form-control flex fixed bottom-0 bg-white p-4 w-full" >
-
+        <div class="fixed bottom-0 bg-white p-4 w-full flex justify-between z-50">
+        <div class="form-control flex" >
             <div class="outer flex f-row mr-4" v-for="category in categories">
                 <label class="cursor-pointer flex items-center filter">
                     <input :value="category.slug" v-model="filterBrands" type="checkbox"
@@ -43,22 +52,26 @@ function resetFilter() {
                     <span class="uppercase">{{ category.slug }}</span>
                 </label>
             </div>
-            <span v-if="hover">This is a secret message.</span>
+        </div>
+
+            <div class="indicator uppercase">{{ isHover }}</div>
+    
          
-     
+     <!--
             <button @click="resetFilter()"
                 class="my-6 px-4 w-fit btn bg-transparent border-white border-2 text-white hover:bg-primary hover:border-white rounded-full">
                 Reset Filter
-            </button>
+            </button>-->
          
         </div>
-            <div class="grid grid-cols-8 gap-4 p-4 items-center justify-center">
+            <div class="grid grid-cols-8 gap-4 p-4 mt-4 items-center justify-center">
+        
                 <template  v-if="filterBrands.length > 0"  class="outer test" v-for="brand in brands">
                     <template class="outer-2" v-for="brandinner in brand.acf">
                         <template v-if="filterBrands.length > 0"  class="outer-3 test" v-for="brandimage in brandinner">
              
                       
-             <img :src=" brandimage.gallery_item.url" v-if="filterBrands.includes(brandimage.gallery_category.slug) && filterBrands.length > 0">
+             <img v-on:mouseover="updateValue(title = brandimage.gallery_title)" :src=" brandimage.gallery_item.url" v-if="filterBrands.includes(brandimage.gallery_category.slug) && filterBrands.length > 0">
              <img :src=" brandimage.gallery_item.url" v-else style="opacity:0.3">
 
 
@@ -66,12 +79,14 @@ function resetFilter() {
            
             </template>
             </template>
+            
+    
                 <template v-else class="outer" v-for="brand in brands">
                     <template class="outer-2" v-for="brandinner in brand.acf">
                             <template class="outer-3" v-for="brandimage in brandinner">
              
                                
-                          <img    @mouseover="hover = true" @mouseleave="hover = false" :src=" brandimage.gallery_item.url">
+                          <img    v-on:mouseover="updateValue(title = brandimage.gallery_title)" :src=" brandimage.gallery_item.url">
                       
     
                             </template>
@@ -86,6 +101,8 @@ function resetFilter() {
 <style>
 
 /* "page" is hardcoded in nuxt3 page transitions atm */
+
+
 
 
 
@@ -106,6 +123,15 @@ input[type="checkbox"]:checked + span {
   opacity: 0;
 }
 
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+
 .example:hover ~ .example-title { background: red;}
 
 .page-enter-active,
@@ -115,6 +141,10 @@ input[type="checkbox"]:checked + span {
 .page-enter,
 .page-leave-to {
   opacity: 0;
+}
+
+img {
+    transition: all 0.5s ease-in-out;
 }
 
 

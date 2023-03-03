@@ -14,7 +14,7 @@ defineProps<{
     <NuxtLink
         v-if="slug"
         class="grid__item"
-        :to="`/${slug}`"
+        :to="`projects/${slug}`"
         >
   
       <img loading="lazy"
@@ -60,7 +60,6 @@ h3 {
 
 .gallery__grid > *:hover { filter: blur(0); transition-delay: 0ms, 0ms; }
 /* Fade in the currently hovered item */
-
 
 
 

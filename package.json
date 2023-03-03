@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "gsap": "^3.11.4",
-    "nuxi": "^3.0.0"
+    "nuxi": "^3.0.0",
+    "vue-marquee-text-component": "^2.0.1",
+    "vue3-marquee": "^3.1.2"
   }
 }

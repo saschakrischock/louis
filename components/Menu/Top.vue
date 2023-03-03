@@ -1,8 +1,8 @@
 <script lang="ts" setup></script>
 <template>
-  <nav class="bg-white text-black z-50 fixed">
+  <nav class="bg-white text-black z-50 fixed top-0">
     <div
-      class="container-full p-4 fixed w-full bg-white flex flex-col sm:flex-row justify-center gap-3 sm:gap-0 sm:justify-between items-center"
+      class="container-full p-4 fixed w-full bg-white top-0 flex flex-col sm:flex-row justify-center gap-3 sm:gap-0 sm:justify-between items-center"
     >
       <NuxtLink to="/" class="black">LG</NuxtLink>
       <ul class="nav uppercase">

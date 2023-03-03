@@ -58,7 +58,7 @@ h3 {
 .gallery__grid:hover > * { filter: blur(10px); }
 /* Fade out all items when the parent is hovered */
 
-.gallery__grid > *:hover { filter: blur(0); transition-delay: 0ms, 0ms; }
+.gallery__grid > *:hover { filter: blur(0) !important; transition-delay: 0ms, 0ms; }
 /* Fade in the currently hovered item */
 
 

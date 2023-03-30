@@ -64,7 +64,7 @@ const post = posts.value[0];
   <div class="single-project-top">
     <div @click="goToPrev">LG</div>
 
-    <div @click="goToPrev">CLOSE</div>
+    <div class="click" @click="goToPrev">CLOSE</div>
   </div>
   
 
@@ -114,6 +114,10 @@ const post = posts.value[0];
 
 .scroll {
 display: flex
+}
+
+.click {
+  cursor: pointer;
 }
 
 .scroll svg {

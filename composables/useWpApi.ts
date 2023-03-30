@@ -16,7 +16,7 @@ export function useWpApi() {
   const getPosts = async (
     category?: number,
     page: number = 1,
-    perPgae: number = 20,
+    perPgae: number = 100,
     fields: string = "author,id,excerpt,title,link,slug,date"
   ) => {
     let query: string = `project?page=${page}&per_page=${perPgae}&_embed=1`;

@@ -71,8 +71,8 @@ function resetFilter() {
                         <template v-if="filterBrands.length > 0"  class="outer-3 test" v-for="brandimage in brandinner">
              
                       
-             <img v-on:mouseover="updateValue(title = brandimage.gallery_title)" :src=" brandimage.gallery_item.url" v-if="filterBrands.includes(brandimage.gallery_category.slug) && filterBrands.length > 0">
-             <img :src=" brandimage.gallery_item.url" v-else style="opacity:0.3">
+             <img loading="lazy" v-on:mouseover="updateValue(title = brandimage.gallery_title)" :src=" brandimage.gallery_item.url" v-if="filterBrands.includes(brandimage.gallery_category.slug) && filterBrands.length > 0">
+             <img loading="lazy" :src=" brandimage.gallery_item.url" v-else style="opacity:0.3">
 
 
                         </template>
@@ -86,7 +86,7 @@ function resetFilter() {
                             <template class="outer-3" v-for="brandimage in brandinner">
              
                                
-                          <img    v-on:mouseover="updateValue(title = brandimage.gallery_title)" :src=" brandimage.gallery_item.url">
+                          <img loading="lazy"    v-on:mouseover="updateValue(title = brandimage.gallery_title)" :src=" brandimage.gallery_item.url">
                       
     
                             </template>

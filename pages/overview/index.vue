@@ -144,6 +144,10 @@ input[type="checkbox"]:checked + span {
   opacity: 0;
 }
 
+.grid {
+  margin: 2.5rem 0;
+}
+
 img {
     transition: all 0.5s ease-in-out;
 }

@@ -4,8 +4,8 @@ defineProps<{
   excerpt?: string;
   image?: string;
   slug?: string;
-  width?: string;
-  height?: string;
+  width?: number;
+  height?: number;
 }>();
 </script>
 

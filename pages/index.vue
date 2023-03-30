@@ -32,11 +32,12 @@ console.log(blogs);
             v-for="blog in blogs"
             :key="blog.id"
             :title="blog.title.rendered"
-            :width="blog._embedded['wp:featuredmedia'][0]?.media_details.width"
-            :height="blog._embedded['wp:featuredmedia'][0]?.media_details.height"
+            :width="blog._embedded['wp:featuredmedia'][0]?.media_details.width.toString()"
+            :height="blog._embedded['wp:featuredmedia'][0]?.media_details.height.toString()"
             :image="blog._embedded['wp:featuredmedia'][0]?.source_url"
             :slug="blog.slug"
           ></BlogGrid>
+          
         </div>
       </div>
     </div>

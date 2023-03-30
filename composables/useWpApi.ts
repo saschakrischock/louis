@@ -32,7 +32,7 @@ export function useWpApi() {
     perPgae: number = 100,
     fields: string = "author,id,excerpt,title,link,slug,date"
   ) => {
-    let query: string = `project?_fields=acf&acf_format=standard`;
+    let query: string = `project?_fields=acf&acf_format=standard&per_page=100`;
     return get<Post[]>(query);
   };
 

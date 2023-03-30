@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 
-
+import { useWpApi } from '~/composables/useWpApi';
 
 const isHover = ref('test');
 
@@ -71,8 +71,8 @@ function resetFilter() {
                         <template v-if="filterBrands.length > 0"  class="outer-3 test" v-for="brandimage in brandinner">
              
                       
-             <img loading="lazy" v-on:mouseover="updateValue(title = brandimage.gallery_title)" :src=" brandimage.gallery_item.url" v-if="filterBrands.includes(brandimage.gallery_category.slug) && filterBrands.length > 0">
-             <img loading="lazy" :src=" brandimage.gallery_item.url" v-else style="opacity:0.3">
+             <img loading="lazy" v-on:mouseover="updateValue(title = brandimage.gallery_title)" :src=" brandimage.gallery_item.sizes.medium" v-if="filterBrands.includes(brandimage.gallery_category.slug) && filterBrands.length > 0">
+             <img loading="lazy" :src=" brandimage.gallery_item.sizes.medium" v-else style="opacity:0.3">
 
 
                         </template>
@@ -85,8 +85,9 @@ function resetFilter() {
                     <template class="outer-2" v-for="brandinner in brand.acf">
                             <template class="outer-3" v-for="brandimage in brandinner">
              
+                       
                                
-                          <img loading="lazy"    v-on:mouseover="updateValue(title = brandimage.gallery_title)" :src=" brandimage.gallery_item.url">
+                          <img loading="lazy"    v-on:mouseover="updateValue(title = brandimage.gallery_title)" :src=" brandimage.gallery_item.sizes.medium">
                       
     
                             </template>

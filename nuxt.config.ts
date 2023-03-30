@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   components: true,
   app: {
 
-
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       charset: "utf-16",

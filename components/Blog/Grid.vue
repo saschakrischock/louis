@@ -25,8 +25,7 @@ defineProps<{
         class="object-cover w-full h-full "
       />
     <div class="grid__content">
-      <h3 class="grid__content-title uppercase mb-2">
-        {{ title }}
+      <h3 class="grid__content-title uppercase mb-2" v-html="title">
       </h3>
       <p
         v-if="excerpt"

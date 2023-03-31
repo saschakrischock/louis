@@ -7,38 +7,63 @@ export default {
   data() {
     return {
       items: [], // Your gallery items data
-      innerWidth: 0 // The width of your gallery inner container
+      innerWidth: 0, // The width of your gallery inner container
+      windowHeight: 0,
+    fullHeight: 0,
+    scrollPosition: 0,
+
     }
   },
 
-  computed() {
-       // this.innerWidth = this.$refs.inner.offsetWidth;
-       const mastheadWidth = this.$refs.gallery.offsetWidth
 
-console.log(this.$refs.gallery.offsetWidth);
-console.log(mastheadWidth);
-
-  },
+  beforeDestroy() {
+  window.removeEventListener('scroll', this.handleScroll);
+},
 
   onAfterLeave() {
       console.log('Page transition is over');
     },
 
+
+
+  methods: {
+    handleScroll() {
+      this.scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+
+      console.log(this.windowHeight)
+      console.log(this.scrollPosition)
+      console.log(this.fullHeight)
+
+if (this.scrollPosition == this.fullHeight) {
+  window.history.length > 1 ? useRouter().go(-1) : useRouter().push('/')
+}
+  }
+  },
+
   mounted() {
 
- 
-  
+
+
     setTimeout(() => {
 
+      this.windowHeight = window.innerHeight || document.documentElement.clientHeight;
+  this.fullHeight = this.$refs.gallery.offsetWidth;
+  this.scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+  window.addEventListener('scroll', this.handleScroll);
+    
+
+
       this.$nextTick(function () {
-    console.log('isthere');
+
+    
+      
     // Get the width of the gallery inner container
    // this.innerWidth = this.$refs.inner.offsetWidth;
     const mastheadWidth = this.$refs.gallery.offsetWidth
     console.log(this.$refs.gallery.offsetWidth);
     console.log(mastheadWidth);
 
-    ScrollTrigger.create({
+    const scroller = ScrollTrigger.create({
   animation: gsap.to(this.$refs.gallery, {
     x: function () {
       return -(mastheadWidth - window.innerWidth);
@@ -47,6 +72,7 @@ console.log(mastheadWidth);
   }),
   trigger: this.$refs.gallery,
   end: function () {
+    console.log("stranger")
     return mastheadWidth;
   },
   scrub: true,
@@ -55,6 +81,7 @@ console.log(mastheadWidth);
   anticipatePin: 1,
   invalidateOnRefresh: true
 });
+
     })
 
 }, "250")

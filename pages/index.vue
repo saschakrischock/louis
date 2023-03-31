@@ -37,7 +37,6 @@ console.log(blogs);
             :image="blog._embedded['wp:featuredmedia'][0]?.source_url"
             :slug="blog.slug"
           ></BlogGrid>
-          
         </div>
       </div>
     </div>
@@ -67,6 +66,17 @@ console.log(blogs);
   opacity: 0;
 }
 
+.grid__item {
+  position: inherit;
+}
+
+
+.grid__content {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 
 .gallery__grid { visibility: hidden; }
 /* Prevents :hover from triggering in the gaps between items */

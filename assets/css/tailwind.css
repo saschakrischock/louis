@@ -22,11 +22,14 @@ body{
     -webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: antialiased;
 	font-smoothing: antialiased;
+  font-size: 0.75rem;
 }
 
 html, body {
     overscroll-behavior-y: none;
   }
+
+
 
 .single-project .nav {
     display: none;

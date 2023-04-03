@@ -27,6 +27,11 @@ export default {
   }
 },
 
+beforeRouteLeave(to, from, next) {
+    alert("test");
+  },
+
+
   data() {
     return {
       scroll: null,

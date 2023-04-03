@@ -9,7 +9,6 @@ type NuxtAppInjections =
   InjectionType<typeof import("../components.plugin").default> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/head/runtime/lib/vueuse-head.plugin").default> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/pages/runtime/router").default> &
-  InjectionType<typeof import("../../plugins/jarallax").default> &
   InjectionType<typeof import("../../plugins/jarallax").default>
 
 declare module '#app' {

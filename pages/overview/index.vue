@@ -84,7 +84,7 @@ function resetFilter() {
                    
                   <NuxtLink :to="`projects/${brand.slug}`">
                                
-                          <img loading="lazy"    v-on:mouseover="updateValue(title = brand.title.rendered)" :src="brand._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url">
+                          <img loading="lazy" v-on:mouseout="updateValue(title = '')"    v-on:mouseover="updateValue(title = brand.title.rendered)" :src="brand._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url">
                   </Nuxtlink>
     
                 </div>

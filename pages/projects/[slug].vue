@@ -61,7 +61,7 @@ const post = posts.value[0];
 
 
 <div>
-  <div class="single-project-top">
+  <div class="single-project-top p-4">
     <div @click="goToPrev">LG</div>
 
     <div class="click" @click="goToPrev">CLOSE</div>
@@ -79,7 +79,7 @@ const post = posts.value[0];
       <BlogGallery/>
 
 
-      <div class="single-project-bottom">
+      <div class="single-project-bottom p-4">
         <div>{{ post.title.rendered }}</div>
         <div class="scroll">Scroll
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -113,7 +113,8 @@ const post = posts.value[0];
 }
 
 .scroll {
-display: flex
+display: flex;
+align-items: center;
 }
 
 .click {
@@ -131,7 +132,6 @@ display: flex
   left: 0;
   background-color: #fff;
   z-index: 100;
-  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -142,7 +142,6 @@ display: flex
   width: 100vw;
   bottom: 0;
   left: 0;
-  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;

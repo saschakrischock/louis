@@ -23,9 +23,9 @@ console.log(blogs);
     </div>
    
 
-      <div class=" p-4">
+      <div>
         <div class="gallery__grid rellax">
-          <BlogGrid 
+          <BlogGrid class="p-4"
             v-for="blog in blogs"
             :key="blog.id"
             :title="blog.title.rendered"
@@ -35,6 +35,18 @@ console.log(blogs);
             :slug="blog.slug"
             :subtitle="blog.acf.subtitle"
           ></BlogGrid>
+
+
+          <div class="footer p-4 fixed bottom-0 w-full bg-white flex justify-between">
+         <div class="footer-left">
+          LOIS GIBSON 2023©
+         </div>
+
+         <div class="footer-right">
+          <a class="m-4" target="_blank" href="">DESIGNED BY KATIE LING</a>
+          <a target="_blank" href="">DEVELOPED BY SASCHA KRISCHOCK</a>
+         </div>
+          </div>
 
         </div>
       </div>
@@ -46,6 +58,10 @@ console.log(blogs);
 <style>
 
 /* "page" is hardcoded in nuxt3 page transitions atm */
+
+.footer {
+  border-top: 1px solid #000;
+}
 
 
 

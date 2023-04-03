@@ -88,7 +88,7 @@ section {
   margin-right: 1rem;
 
   img {
-    height: 88%;
+    height: calc(100% - 6.8rem);
     width: auto;
     object-fit: cover;
   }

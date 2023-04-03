@@ -27,9 +27,7 @@ export default {
   }
 },
 
-beforeRouteLeave(to, from, next) {
-    alert("test");
-  },
+ 
 
 
   data() {
@@ -42,7 +40,7 @@ beforeRouteLeave(to, from, next) {
   mounted() {
     this.createRellax();
   },
-  beforeUnmount() {
+  afterUnmount() {
     this.destroyRellax();
   },
   methods: {

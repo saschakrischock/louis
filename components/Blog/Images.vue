@@ -57,7 +57,7 @@ const post = posts.value[0];
 
 
   <section v-for="image in post.acf.gallery" :key="image.gallery_item">
-  <img loading="lazy" :height="image.gallery_item.height" :width="image.gallery_item.width" :src="image.gallery_item.url" :alt="image.alt">
+  <img loading="lazy" :height="image.gallery_item.height" :width="image.gallery_item.width" :src="image.gallery_item.sizes.large" :alt="image.alt">
   </section>
 
 
@@ -77,6 +77,14 @@ const post = posts.value[0];
 /* "page" is hardcoded in nuxt3 page transitions atm */
 .page-enter-from {
   opacity: 0;
+}
+
+.lazyload {
+  opacity: 0;
+}
+
+.isLoading {
+  background-color: #ddd;
 }
 
 section {

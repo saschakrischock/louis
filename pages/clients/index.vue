@@ -43,7 +43,7 @@ const { data: blogs, refresh, error } = await useWpApi().getPosts();
 <template>
 <div>
   <img class="absolute" 
-        :src=" isHover ">
+        :src=" isHover " data-not-lazy>
     <div class="fixed bottom-4">
         <Vue3Marquee :clone="true" :duration="200" direction="reverse">
             <div v-for="blog in blogs" :key="blog.id"><span>–</span>

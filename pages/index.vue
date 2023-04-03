@@ -31,7 +31,7 @@ console.log(blogs);
             :title="blog.title.rendered"
             :width="blog._embedded['wp:featuredmedia'][0]?.media_details.width.toString()"
             :height="blog._embedded['wp:featuredmedia'][0]?.media_details.height.toString()"
-            :image="blog._embedded['wp:featuredmedia'][0]?.source_url"
+            :image="blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.large?.source_url"
             :slug="blog.slug"
             :subtitle="blog.acf.subtitle"
           ></BlogGrid>
@@ -63,6 +63,9 @@ console.log(blogs);
   border-top: 1px solid #000;
 }
 
+.p-4 {
+  padding-bottom: 0.9rem;
+}
 
 
 /* "page" is hardcoded in nuxt3 page transitions atm */

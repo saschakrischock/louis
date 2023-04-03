@@ -1,9 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  mounted() {
-    // Perform any actions that need to be done after the new page is loaded
-    console.log('New page has finished loading...')
-  },
+
   components: true,
   app: {
 
@@ -20,8 +17,7 @@ export default defineNuxtConfig({
 
 
 
-
-  modules: ["@nuxtjs/tailwindcss"],
+  modules: ["@nuxtjs/tailwindcss", "nuxt3-lazy-load"],
   runtimeConfig: {
     public: {
       wpUri: process.env.WP_URI,

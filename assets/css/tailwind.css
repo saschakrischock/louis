@@ -25,6 +25,16 @@ body{
   font-size: 0.75rem;
 }
 
+
+.lazyLoad {
+  opacity: 0;
+  transition: none;
+}
+
+.isLoaded {
+  opacity: 1;
+}
+
 html, body {
     overscroll-behavior-y: none;
   }

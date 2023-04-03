@@ -13,12 +13,17 @@
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.1.3",
+    "@types/rellax": "^1.7.4",
     "nuxt": "3.0.0",
     "nuxt-gsap-module": "^1.7.3"
   },
   "dependencies": {
     "gsap": "^3.11.4",
+    "jarallax": "^2.1.3",
+    "locomotive-scroll": "^4.1.4",
     "nuxi": "^3.0.0",
+    "object-fit-images": "^3.2.4",
+    "rellax": "^1.12.1",
     "vue-marquee-text-component": "^2.0.1",
     "vue3-marquee": "^3.1.2"
   }

@@ -14,6 +14,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 
 
+
     // same as beforeRouteLeave option with no access to `this`
     onBeforeRouteLeave((to, from) => {
      // const answer = window.confirm(

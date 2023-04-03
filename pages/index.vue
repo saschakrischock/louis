@@ -1,18 +1,7 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 
 import { useWpApi } from '~~/composables/useWpApi';
  
-
-useHead({
-  title: "Gallery",
-  meta: [
-    {
-      name: "description",
-      content: "Gallery",
-    },
-  ],
-  titleTemplate: "Louis - %s",
-});
 
 const { data: blogs, refresh, error } = await useWpApi().getPosts();
 console.log(blogs);
@@ -26,8 +15,16 @@ console.log(blogs);
 
     <!-- Blog Section Starts -->
     <div class="blogs">
+
+
+    <div class="title-fixed text-center">
+      <div class="title-fixed-title uppercase"></div>
+      <div class="title-fixed-subtitle capitalize"></div>
+    </div>
+   
+
       <div class=" p-4">
-        <div class="gallery__grid">
+        <div class="gallery__grid rellax">
           <BlogGrid 
             v-for="blog in blogs"
             :key="blog.id"
@@ -36,7 +33,9 @@ console.log(blogs);
             :height="blog._embedded['wp:featuredmedia'][0]?.media_details.height.toString()"
             :image="blog._embedded['wp:featuredmedia'][0]?.source_url"
             :slug="blog.slug"
+            :subtitle="blog.acf.subtitle"
           ></BlogGrid>
+
         </div>
       </div>
     </div>
@@ -68,6 +67,15 @@ console.log(blogs);
 
 .grid__item {
   position: inherit;
+}
+
+.title-fixed {
+  left: 50%;
+  position: fixed;
+  text-align: center;
+  top: 50%;
+  z-index: 100;
+  transform: translate(-50%,-50%);
 }
 
 

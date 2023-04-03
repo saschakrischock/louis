@@ -12,6 +12,8 @@ export default defineNuxtConfig({
       meta: [{ name: "description", content: "Louis" }],
     },
   },
+
+  
   modules: ["@nuxtjs/tailwindcss"],
   runtimeConfig: {
     public: {

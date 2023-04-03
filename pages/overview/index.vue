@@ -2,7 +2,7 @@
 
 import { useWpApi } from '~/composables/useWpApi';
 
-const isHover = ref('test');
+const isHover = ref('');
 
 console.log('object' + isHover)
 
@@ -23,7 +23,7 @@ useHead({
   titleTemplate: "Louis - %s",
 });
 
-const { data: blogs, refresh, error } = await useWpApi().getACF();
+const { data: blogs, refresh, error } = await useWpApi().getPosts();
 
 const { data: categories} = await useWpApi().getCatgories();
 console.log(blogs);
@@ -47,7 +47,7 @@ function resetFilter() {
         <div class="form-control flex" >
             <div class="outer flex f-row mr-4" v-for="category in categories">
                 <label class="cursor-pointer flex items-center filter">
-                    <input :value="category.slug" v-model="filterBrands" type="checkbox"
+                    <input :value="category.id" v-model="filterBrands" type="checkbox"
                         class="checked:border-blue checked:color-blue checkbox-xs checkbox-primary" />
                     <span class="uppercase">{{ category.slug }}</span>
                 </label>
@@ -64,36 +64,31 @@ function resetFilter() {
             </button>-->
          
         </div>
-            <div class="grid grid-cols-8 gap-4 p-4 mt-4 items-center justify-center">
+            <div class="grid grid-cols-14 gap-4 p-4 mt-4 items-center justify-center">
         
-                <template  v-if="filterBrands.length > 0"  class="outer test" v-for="brand in brands">
-                    <template class="outer-2" v-for="brandinner in brand.acf">
-                        <template v-if="filterBrands.length > 0"  class="outer-3 test" v-for="brandimage in brandinner">
-             
-                      
-             <img loading="lazy" v-on:mouseover="updateValue(title = brandimage.gallery_title)" :src=" brandimage.gallery_item.sizes.medium" v-if="filterBrands.includes(brandimage.gallery_category.slug) && filterBrands.length > 0">
-             <img loading="lazy" :src=" brandimage.gallery_item.sizes.medium" v-else style="opacity:0.3">
+                <div  v-if="filterBrands.length > 0"  class="outer" v-for="brand in brands">
 
+                  <NuxtLink  v-bind:class="{ 'pointer-events-none': !filterBrands.includes(brand.categories[0]) && filterBrands.length > 0 }" :to="`projects/${brand.slug}`">
+          
+             <img loading="lazy" v-on:mouseover="updateValue(title = brand.title.rendered)" :src="brand._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url" v-if="filterBrands.includes(brand.categories[0]) && filterBrands.length > 0">
+         
+             <img loading="lazy " :src="brand._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url" v-else style="opacity:0.3">
+            </Nuxtlink>
 
-                        </template>
+                </div>
            
-            </template>
-            </template>
+
             
     
-                <template v-else class="outer" v-for="brand in brands">
-                    <template class="outer-2" v-for="brandinner in brand.acf">
-                            <template class="outer-3" v-for="brandimage in brandinner">
-             
-                       
+                <div v-else class="outer" v-for="brand in brands">
+                   
+                  <NuxtLink :to="`projects/${brand.slug}`">
                                
-                          <img loading="lazy"    v-on:mouseover="updateValue(title = brandimage.gallery_title)" :src=" brandimage.gallery_item.sizes.medium">
-                      
+                          <img loading="lazy"    v-on:mouseover="updateValue(title = brand.title.rendered)" :src="brand._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url">
+                  </Nuxtlink>
     
-                            </template>
-                    </template>
-
-            </template>
+                </div>
+      
        
             </div>
     </div>
@@ -112,6 +107,11 @@ function resetFilter() {
     width: 0;
 }
 
+
+.grid {
+  grid-template-columns: repeat(14, 1fr);
+  align-items: flex-start;
+}
 
 
 input[type="checkbox"]:checked + span {
@@ -159,7 +159,7 @@ img {
 .gallery__grid > * { visibility: visible; }
 /* Brings the child items back in, even though the parent is `hidden` */
 
-.gallery__grid > * { transition: filter 150ms linear 100ms, transform 150ms ease-in-out 100ms; }
+.gallery__grid > * { transition: filter 150ms linear 100ms }
 /* Makes the fades smooth with a slight delay to prevent jumps as the mouse moves between items */
 
 

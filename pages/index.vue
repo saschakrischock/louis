@@ -108,7 +108,7 @@ console.log(blogs);
 .gallery__grid > * { visibility: visible; }
 /* Brings the child items back in, even though the parent is `hidden` */
 
-.gallery__grid > * { transition: filt 150ms linear 100ms, transform 150ms ease-in-out 100ms; }
+.gallery__grid > * { transition: filt 150ms linear 100ms; }
 /* Makes the fades smooth with a slight delay to prevent jumps as the mouse moves between items */
 
 

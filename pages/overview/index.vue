@@ -3,14 +3,17 @@
 import { useWpApi } from '~/composables/useWpApi';
 
 const isHover = ref('');
+const isCat = ref('');
 
-console.log('object' + isHover)
+console.log('object' + isCat)
 
 const updateValue = (title) => {
   isHover.value = title;
 };
 
-
+const updateCat = (cat) => {
+  isCat.value = cat;
+};
 
 useHead({
   title: "Overview",
@@ -45,11 +48,11 @@ function resetFilter() {
      <div>
         <div class="fixed bottom-0 bg-white p-4 w-full flex justify-between z-50">
         <div class="form-control flex" >
-            <div class="outer flex f-row mr-4" v-for="category in categories">
-                <label class="cursor-pointer flex items-center filter">
+            <div class="outer flex f-row mr-4" v-for="category in categories" >
+                <label class="cursor-pointer f}}lex items-center filter">
                     <input :value="category.id" v-model="filterBrands" type="checkbox"
                         class="checked:border-blue checked:color-blue checkbox-xs checkbox-primary" />
-                    <span class="uppercase">{{ category.slug }}</span>
+                    <span :class="{ active: category.id === isCat }"  class="uppercase">{{ category.slug }}</span>
                 </label>
             </div>
         </div>
@@ -64,9 +67,9 @@ function resetFilter() {
             </button>-->
          
         </div>
-            <div class="grid grid-cols-14 gap-4 p-4 mt-4 items-center justify-center">
+            <div class="grid grid-cols-14 gap-4 p-4 mt-4 items-center justify-center gallery__grid">
         
-                <div  v-if="filterBrands.length > 0"  class="outer" v-for="brand in brands">
+                <div  v-if="filterBrands.length > 0" v-bind:class="{ 'pointer-events-none': !filterBrands.includes(brand.categories[0]) && filterBrands.length > 0 }"  class="outer" v-for="brand in brands">
 
                   <NuxtLink  v-bind:class="{ 'pointer-events-none': !filterBrands.includes(brand.categories[0]) && filterBrands.length > 0 }" :to="`projects/${brand.slug}`">
           
@@ -82,7 +85,7 @@ function resetFilter() {
     
                 <div v-else class="outer" v-for="brand in brands">
                    
-                  <NuxtLink :to="`projects/${brand.slug}`">
+                  <NuxtLink v-on:mouseout="updateCat(cat = '')" v-on:mouseover="updateCat(cat = brand.categories[0])" :to="`projects/${brand.slug}`">
                                
                           <img loading="lazy" v-on:mouseout="updateValue(title = '')"    v-on:mouseover="updateValue(title = brand.title.rendered)" :src="brand._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url">
                   </Nuxtlink>
@@ -114,9 +117,14 @@ function resetFilter() {
 }
 
 
+@media only screen and (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 input[type="checkbox"]:checked + span {
   color: blue;
-  border-bottom: 1px solid blue;
 }
 
 /* "page" is hardcoded in nuxt3 page transitions atm */
@@ -124,6 +132,10 @@ input[type="checkbox"]:checked + span {
   opacity: 0;
 }
 
+
+.active {
+  color: blue;
+}
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
@@ -162,6 +174,18 @@ img {
 .gallery__grid > * { transition: filter 150ms linear 100ms }
 /* Makes the fades smooth with a slight delay to prevent jumps as the mouse moves between items */
 
+.gallery__grid > *:hover {
+  filter: none !important;
+}
+
+.gallery__grid img {
+  transition: filter 0.3s ease-in-out;
+}
+
+.gallery__grid:hover > * img { filter: blur(10px); }
+/* Fade out all items when the parent is hovered */
+
+.gallery__grid > *:hover img { filter: none !important; transition-delay: 0ms, 0ms; }
 
 
   .blur {

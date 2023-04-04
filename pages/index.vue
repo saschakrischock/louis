@@ -37,7 +37,7 @@ console.log(blogs);
           ></BlogGrid>
 
 
-          <div class="footer p-4 fixed bottom-0 w-full bg-white flex justify-between">
+          <div class="footer p-4 relative bottom-0 w-full bg-white flex justify-between">
          <div class="footer-left">
           LOIS GIBSON 2023©
          </div>
@@ -95,6 +95,17 @@ console.log(blogs);
   top: 50%;
   z-index: 100;
   transform: translate(-50%,-50%);
+}
+
+
+
+.lazyLoad, img {
+  opacity: 0;
+  transition: none;
+}
+
+.isLoaded {
+    opacity: 1;
 }
 
 

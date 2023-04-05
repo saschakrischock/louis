@@ -160,7 +160,11 @@ h3 {
 }
 
 .menmagazinepradaeditorial img, .yinchair img {
-  margin-left: 5vw;
+  margin-left: 5vw !important;
+}
+
+.pamxpumacampaign img, .byredofragrancecampaign img {
+  margin-left: -10vw !important;
 }
 
 .sandroglobalstorewindows {

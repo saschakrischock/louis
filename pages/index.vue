@@ -61,7 +61,7 @@ console.log(blogs);
 /* "page" is hardcoded in nuxt3 page transitions atm */
 
 .footer {
-  border-top: 1px solid #000;
+
 }
 
 .p-4 {

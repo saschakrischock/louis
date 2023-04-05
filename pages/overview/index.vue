@@ -174,7 +174,7 @@ img {
 .gallery__grid > * { transition: filter 150ms linear 100ms }
 /* Makes the fades smooth with a slight delay to prevent jumps as the mouse moves between items */
 
-.gallery__grid > *:hover {
+.gallery__grid img > *:hover {
   filter: none !important;
 }
 

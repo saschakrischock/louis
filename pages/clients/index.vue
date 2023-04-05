@@ -47,7 +47,7 @@ const { data: blogs, refresh, error } = await useWpApi().getPosts();
     <div class="fixed bottom-4">
         <Vue3Marquee :clone="true" :duration="200" direction="reverse">
             <div v-for="blog in blogs" :key="blog.id"><span>–</span>
-                <NuxtLink v-on:mouseout="updateValue(title = '')"  v-on:mouseover="updateValue(title = blog._embedded['wp:featuredmedia'][0]?.media_details.sizes.large.source_url)"
+                <NuxtLink v-on:mouseout="updateValue(title = '')"  v-on:mouseover="updateValue(title = blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url)"
                 class="mr-0 uppercase relative" 
                 :to="`projects/${blog.slug}`
                 ">

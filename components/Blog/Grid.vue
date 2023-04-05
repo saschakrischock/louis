@@ -87,7 +87,7 @@ export default {
 
 
 
-    <NuxtLink data-scroll
+    <NuxtLink data-scroll   
         v-if="slug" 
         class="grid__item"
         :to="`projects/${slug}`"
@@ -114,6 +114,8 @@ export default {
 </template>
 
 <style scoped>
+
+
 
 .jarallax {
   position: relative;
@@ -148,21 +150,29 @@ h3 {
 }
 
 
-.gallery__grid > *:hover {
+.gallery__grid img > *:hover {
   filter: none !important;
 }
 
-.gallery__grid:hover > * img { filter: blur(10px); }
+.gallery__grid img:hover > * img { filter: blur(10px); }
 /* Fade out all items when the parent is hovered */
 
-.gallery__grid > *:hover img { filter: none !important; transition-delay: 0ms, 0ms; }
+.gallery__grid img > img:hover img { filter: none !important; transition-delay: 0ms, 0ms; }
 /* Fade in the currently hovered item */
 
-.grid__item__inner:nth-child(even) {
-  margin-right: 0;
-    margin-left: auto;
-    margin-top: -15vw;
+
+
+.grid__item {
+
+  float: left;
 }
+
+
+/*
+.gallery__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}*/
 
 
 .grid__item__inner:nth-child(2n) {
@@ -171,7 +181,7 @@ h3 {
 
 .grid__item__inner:nth-child(7n) {
   padding: 4rem;
-  margin-left: 20vw;
+  /*margin-left: 20vw;*/
     margin-bottom: 30vw;
 }
 
@@ -188,25 +198,41 @@ h3 {
   padding: 3rem;
 }
 
-.teethmagazineissuecoverstory {
-  margin-top: 10vw !important;
-}
 
-.carharrtwipxliamhodgesxlawmagazinefutureproof {
-  margin-top:10vw;
-  widows: 30vw;
-  margin-left: 2rem;
-}
+
+
+
+
 
 
 .grid__item__inner {
-  width: 40vw;
-  display: block
+ /* width: 40vw;*/
+ width: 20vw;
+ height: 70vh;
+ /*margin-bottom: 70vh;*/
+  display: inline-block;
 }
 
+.grid__item__inner:nth-child(even) {
+  margin-right: 0;
+  width: 30vw;
+  height: 30vh;
+  /*margin-bottom: 30vh;*/
+  /*  margin-left: auto;*/
+}
 
+.grid__item__inner:nth-child(even) img {
+  margin-left: -5vw;
+}
+
+.gallery__grid {
+  float:left;
+  display: inline-block;
+}
 
 .grid__item img {
   width: 100%;
+  height: auto;
+  position: absolute;
 }
 </style>

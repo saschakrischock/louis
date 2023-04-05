@@ -154,7 +154,7 @@ h3 {
 }
 
 
-.sandroglobalstorewindows img, .youngthugspiderpopupstoreevent img {
+.sandroglobalstorewindows img, .youngthugspiderpopupstoreevent img, .harpersbazaarusamiumiu img {
   margin-left: -3vw !important;
   margin-bottom: 10vw;
 }

@@ -22,7 +22,7 @@ methods: {
 <template>
   <nav class="bg-white text-black z-50 fixed top-0 top-bar">
     <div
-      class="container-full p-4 fixed w-full bg-white top-0 top-bar flex flex-row  justify-between gap-3 sm:gap-0 sm:justify-between items-center"
+      class="container-full p-4 fixed w-full  top-0 top-bar flex flex-row  justify-between gap-3 sm:gap-0 sm:justify-between items-center"
     >
       <NuxtLink to="/" class="black">LG</NuxtLink>
 

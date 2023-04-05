@@ -154,9 +154,13 @@ h3 {
 }
 
 
-.sandroglobalstorewindows img {
+.sandroglobalstorewindows img, .youngthugspiderpopupstoreevent img {
   margin-left: -3vw !important;
   margin-bottom: 10vw;
+}
+
+.menmagazinepradaeditorial img, .yinchair img {
+  margin-left: 5vw;
 }
 
 .sandroglobalstorewindows {

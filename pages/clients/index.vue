@@ -68,6 +68,10 @@ const { data: blogs, refresh, error } = await useWpApi().getPosts();
   }
 
   img {
+    opacity: 1 !important;
+  }
+
+  img {
     width: 20vw;
     transition: none;
   }

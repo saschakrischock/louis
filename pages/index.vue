@@ -37,7 +37,12 @@ console.log(blogs);
           ></BlogGrid>
 
 
-          <div class="footer p-4 relative bottom-0 w-full bg-white flex justify-between">
+
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer p-4 relative bottom-0 w-full bg-white flex justify-between">
          <div class="footer-left">
           LOIS GIBSON 2023©
          </div>
@@ -47,10 +52,6 @@ console.log(blogs);
           <a target="_blank" href="">DEVELOPED BY SASCHA KRISCHOCK</a>
          </div>
           </div>
-
-        </div>
-      </div>
-    </div>
     <!-- Blog Section Ends  -->
   </main>
 </template>

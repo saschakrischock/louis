@@ -116,6 +116,10 @@ export default {
 <style scoped>
 
 
+.squigglechairtwo {
+  height: 70vh;
+  margin-bottom: 70vh;
+}
 
 .jarallax {
   position: relative;
@@ -149,6 +153,16 @@ h3 {
   position: inherit;
 }
 
+
+.sandroglobalstorewindows img {
+  margin-left: -3vw !important;
+  margin-bottom: 10vw;
+}
+
+.sandroglobalstorewindows {
+  margin-bottom: 10vh;
+  margin-top: 10vh;
+}
 
 .gallery__grid img > *:hover {
   filter: none !important;

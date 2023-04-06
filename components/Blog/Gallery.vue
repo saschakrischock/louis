@@ -66,7 +66,6 @@ if (this.scrollPosition == this.fullHeight) {
     console.log(mastheadWidth);
 
     if (window.screen.width > 768) {
-      alert(window.screen.width)
     const scroller = ScrollTrigger.create({
   animation: gsap.to(this.$refs.gallery, {
     x: function () {

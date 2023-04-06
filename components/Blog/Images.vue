@@ -102,6 +102,21 @@ section {
   }
 }
 
+@media screen and (max-width: 768px) {
+
+section {
+  display: inline-block;
+  width: max-content;
+}
+
+section img {
+  width: 100%;
+  object-fit: cover;
+  height: calc(100% - 3.5rem);
+}
+}
+
+
 .page-enter-active,
 .page-leave-active {
   transition: all 0.2s;

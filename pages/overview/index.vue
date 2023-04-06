@@ -57,7 +57,7 @@ function resetFilter() {
             </div>
         </div>
 
-            <div class="indicator uppercase">{{ isHover }}</div>
+            <div class="indicator uppercase hide-mobile">{{ isHover }}</div>
     
          
      <!--
@@ -118,6 +118,11 @@ function resetFilter() {
 
 
 @media only screen and (max-width: 768px) {
+
+  .hide-mobile {
+    display: none;
+  }
+
   .grid {
     grid-template-columns: repeat(4, 1fr);
   }

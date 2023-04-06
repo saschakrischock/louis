@@ -49,7 +49,9 @@ if (this.scrollPosition == this.fullHeight) {
       this.windowHeight = window.innerHeight || document.documentElement.clientHeight;
   this.fullHeight = this.$refs.gallery.offsetWidth;
   this.scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+  if (window.screen.width > 768) {
   window.addEventListener('scroll', this.handleScroll);
+}
     
 
 
@@ -63,6 +65,8 @@ if (this.scrollPosition == this.fullHeight) {
     console.log(this.$refs.gallery.offsetWidth);
     console.log(mastheadWidth);
 
+    if (window.screen.width > 768) {
+      alert(window.screen.width)
     const scroller = ScrollTrigger.create({
   animation: gsap.to(this.$refs.gallery, {
     x: function () {
@@ -77,10 +81,11 @@ if (this.scrollPosition == this.fullHeight) {
   },
   scrub: true,
   pin: true,
- // markers: true,
+  //markers: true,
   anticipatePin: 1,
   invalidateOnRefresh: true
 });
+}
 
     })
 
@@ -159,6 +164,17 @@ section:nth-child(2) {
 }
 
 @media screen and (max-width: 768px) {
+
+
+  .gallery {
+    display: block;
+    overflow-y:hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  position: relative;
+}
+
+
   .logo-real {
     position: relative;
     transition: none !important;

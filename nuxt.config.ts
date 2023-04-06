@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       charset: "utf-16",
-      viewport: "width=device-width,initial-scale=1",
+      viewport: 'width=device-width, initial-scale=1',
       title: "Louis",
       titleTemplate: "%s - Louis",
       meta: [{ name: "description", content: "Louis" }],

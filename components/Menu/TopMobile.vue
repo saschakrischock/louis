@@ -3,7 +3,7 @@ import { onBeforeRouteLeave } from "vue-router"
 
 onBeforeRouteLeave(() => {
     setTimeout(() => {
-      document.querySelector('.nav-mobile').classList.remove('active');
+      document.querySelector('.nav-mobile').classList.remove('active-nav');
     }, 2000) // adjust the delay as needed
 })
 
@@ -51,11 +51,12 @@ nav {
   backdrop-filter: blur(0);
 }
 
-.nav-mobile.active {
+.nav-mobile.active-nav {
   opacity: 1;
   display: flex !important;
   pointer-events: inherit;
-  backdrop-filter: blur(10px);
+ /* backdrop-filter: blur(10px);*/
+ background-color: #ffffffdb;
 }
 
 .black {

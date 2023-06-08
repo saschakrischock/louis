@@ -9,22 +9,23 @@ export default {
       items: [], // Your gallery items data
       innerWidth: 0, // The width of your gallery inner container
       windowHeight: 0,
-    fullHeight: 0,
-    scrollPosition: 0,
-
+      fullHeight: 0,
+      scrollPosition: 0,
+      scrollProgress: 0, // Added scrollProgress variable
+      scrollInterval: null, // Added scrollInterval variable
+      scrolling: false, // Added scrolling variable
+      scrollBackInterval: null, // Added scrollBackInterval variable
+      scrollingBack: false // Added scrollingBack variable
     }
   },
 
-
   beforeDestroy() {
-  window.removeEventListener('scroll', this.handleScroll);
-},
+    window.removeEventListener('scroll', this.handleScroll);
+  },
 
   onAfterLeave() {
-      console.log('Page transition is over');
-    },
-
-
+    console.log('Page transition is over');
+  },
 
   methods: {
     handleScroll() {
@@ -34,71 +35,117 @@ export default {
       console.log(this.scrollPosition)
       console.log(this.fullHeight)
 
-if (this.scrollPosition == this.fullHeight) {
-  window.history.length > 1 ? useRouter().go(-1) : useRouter().push('/')
-}
-  }
+      if (this.scrollPosition == this.fullHeight) {
+        window.history.length > 1 ? useRouter().go(-1) : useRouter().push('/')
+      }
+
+      // Calculate scroll progress as a percentage
+      this.scrollProgress = (this.scrollPosition / this.fullHeight) * 100;
+    },
+
+    startScroll() {
+      this.scrolling = true;
+      this.scrollInterval = setInterval(this.scrollPage, 15);
+    },
+
+    stopScroll() {
+      this.scrolling = false;
+      clearInterval(this.scrollInterval);
+    },
+
+    scrollPage() {
+      if (this.scrolling) {
+        window.scrollBy(0, 10); // Adjust the scrolling speed by changing the second parameter
+      }
+    },
+
+    startScrollBack() {
+      this.scrollingBack = true;
+      this.scrollBackInterval = setInterval(this.scrollPageBack, 15);
+    },
+
+    stopScrollBack() {
+      this.scrollingBack = false;
+      clearInterval(this.scrollBackInterval);
+    },
+
+    scrollPageBack() {
+      if (this.scrollingBack) {
+        window.scrollBy(0, -10); // Adjust the scrolling speed by changing the second parameter
+      }
+    }
   },
 
   mounted() {
-
-
-
     setTimeout(() => {
-
       this.windowHeight = window.innerHeight || document.documentElement.clientHeight;
-  this.fullHeight = this.$refs.gallery.offsetWidth;
-  this.scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
-  if (window.screen.width > 768) {
-  window.addEventListener('scroll', this.handleScroll);
-}
-    
-
-
-      this.$nextTick(function () {
-
-    
+      this.fullHeight = this.$refs.gallery.offsetWidth;
+      this.scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
       
-    // Get the width of the gallery inner container
-   // this.innerWidth = this.$refs.inner.offsetWidth;
-    const mastheadWidth = this.$refs.gallery.offsetWidth
-    console.log(this.$refs.gallery.offsetWidth);
-    console.log(mastheadWidth);
+      if (window.screen.width > 768) {
+        window.addEventListener('scroll', this.handleScroll);
+      }
 
-    if (window.screen.width > 768) {
-    const scroller = ScrollTrigger.create({
-  animation: gsap.to(this.$refs.gallery, {
-    x: function () {
-      return -(mastheadWidth - window.innerWidth);
-    },
-    ease: 'none',
-  }),
-  trigger: this.$refs.gallery,
-  end: function () {
-    console.log("stranger")
-    return mastheadWidth;
-  },
-  scrub: true,
-  pin: true,
-  //markers: true,
-  anticipatePin: 1,
-  invalidateOnRefresh: true
-});
-}
+      this.$nextTick(() => {
+        const mastheadWidth = this.$refs.gallery.offsetWidth;
 
-    })
-
-}, "250")
-
+        if (window.screen.width > 768) {
+          const scroller = ScrollTrigger.create({
+            animation: gsap.to(this.$refs.gallery, {
+              x: function () {
+                return -(mastheadWidth - window.innerWidth);
+              },
+              ease: 'none',
+            }),
+            trigger: this.$refs.gallery,
+            end: function () {
+              console.log("stranger")
+              return mastheadWidth;
+            },
+            scrub: true,
+            pin: true,
+            //markers: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true
+          });
+        }
+      });
+    }, 250);
   }
 }
 </script>
 
 
 <template>
+  <div>
   <div class="gallery" ref="gallery">
-    <BlogImages/>
-      </div>
+    <div class="scroll-indicator top-0 fixed h-2 bg-black" :style="{ width: scrollProgress + '%' }"></div> <!-- Updated width binding -->
+    <BlogImages/>  
+    </div>
+    <div class="bottom-3 fixed left-2 z-50 cursor-pointer hide-mobile">
+    <button id="scrollBackButton" @mousedown="startScrollBack" @mouseup="stopScrollBack" @mouseout="stopScrollBack">
+      <svg style="transform: rotate(-180deg)" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_31_247" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+<rect width="24" height="24" transform="matrix(-1 0 0 1 24 0)" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_31_247)">
+<path d="M12 20L20 12L12 4L10.575 5.4L16.175 11H4V13H16.175L10.575 18.6L12 20Z" fill="#1C1B1F"/>
+</g>
+</svg>
+</button> <!-- Added scroll back button -->
+
+    <button id="scrollButton" @mousedown="startScroll" @mouseup="stopScroll" @mouseout="stopScroll">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_31_247" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+<rect width="24" height="24" transform="matrix(-1 0 0 1 24 0)" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_31_247)">
+<path d="M12 20L20 12L12 4L10.575 5.4L16.175 11H4V13H16.175L10.575 18.6L12 20Z" fill="#1C1B1F"/>
+</g>
+</svg>
+    </button> <!-- Added button element -->
+  </div>
+    </div>
 </template>
 
 
@@ -108,6 +155,12 @@ if (this.scrollPosition == this.fullHeight) {
   flex-direction: column;
   margin-left: 0.7rem;
 }
+
+
+.scroll-indicator {
+  z-index: 101;
+}
+
 
 .gallery {
   position: absolute;
@@ -164,6 +217,9 @@ section:nth-child(2) {
 
 @media screen and (max-width: 768px) {
 
+  .single-project-top {
+    background-color: #fff !important;
+  }
 
   .gallery {
     display: block;

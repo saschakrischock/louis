@@ -61,8 +61,10 @@ const post = posts.value[0];
 
 
 <div>
-  <div class="single-project-top p-4">
+  <div class="single-project-top p-4 bg-transparent">
     <div @click="goToPrev">LG</div>
+
+    <div class="hide-mobile"><span class="uppercase">{{ post.title.rendered }}</span> <soan v-if="post.acf.subtitle"> {{ post.acf.subtitle }}</soan></div>
 
     <div class="click" @click="goToPrev">CLOSE</div>
   </div>
@@ -80,7 +82,7 @@ const post = posts.value[0];
 
 
       <div class="single-project-bottom p-4">
-        <div>{{ post.title.rendered }}</div>
+        <div class="hide-desktop"><span class="uppercase">{{ post.title.rendered }}</span> <soan v-if="post.acf.subtitle"> {{ post.acf.subtitle }}</soan></div>
         <div class="scroll">Scroll
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <mask id="mask0_31_247" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -130,7 +132,6 @@ align-items: center;
   width: 100vw;
   top: 0;
   left: 0;
-  background-color: #fff;
   z-index: 100;
   display: flex;
   justify-content: space-between;
@@ -140,11 +141,18 @@ align-items: center;
 .single-project-bottom {
   position: fixed;
   width: 100vw;
+  display: none !important;
   bottom: 0;
   left: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+.single-project-bottom {
+display: flex !important;
+}
 }
 
 .blog__content {

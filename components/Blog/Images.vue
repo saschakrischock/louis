@@ -74,6 +74,13 @@ const post = posts.value[0];
 
 <style>
 
+@media screen and (max-width: 768px) {
+
+.single-project-top {
+  background-color: #fff !important;
+}
+}
+
 /* "page" is hardcoded in nuxt3 page transitions atm */
 .page-enter-from {
   opacity: 0;
@@ -97,6 +104,7 @@ section {
 
   img {
     height: calc(100% - 6.8rem);
+    margin-top: -0.5rem;
     width: auto;
     object-fit: cover;
   }
@@ -112,7 +120,8 @@ section {
 section img {
   width: 100%;
   object-fit: cover;
-  height: calc(100% - 3.5rem);
+  margin-top: 3.1rem;
+    height: calc(100% - 6.4rem);
 }
 }
 

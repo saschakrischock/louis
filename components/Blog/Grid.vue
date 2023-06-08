@@ -2,80 +2,71 @@
 import Rellax from "rellax";
 
 export default {
-
   props: {
-  title: {
-    type: String,
+    title: {
+      type: String,
+    },
+    excerpt: {
+      type: String,
+    },
+    image: {
+      type: String,
+    },
+    slug: {
+      type: String,
+    },
+    width: {
+      type: Number,
+    },
+    height: {
+      type: Number,
+    },
+    subtitle: {
+      type: String,
+    },
   },
-  excerpt: {
-    type: String,
-  },
-  image: {
-    type: String,
-  },
-  slug: {
-    type: String,
-  },
-  width: {
-    type: Number,
-  },
-  height: {
-    type: Number,
-  },
-  subtitle: {
-    type: String,
-  }
-},
-
- 
-
-
   data() {
     return {
       scroll: null,
       rellax: null,
-      slugsimple: this.slug.replace(/[0-9-]/g, '')
+      slugsimple: this.slug.replace(/[0-9-]/g, ""),
     };
   },
   mounted() {
-    this.createRellax();
+    if (window.innerWidth >= 1024) {
+      this.createRellax();
+    }
   },
-  afterUnmount() {
+  beforeUnmount() {
     this.destroyRellax();
   },
   methods: {
     logTitle() {
-      console.log(this.title)
-      document.querySelector('.title-fixed-title').innerHTML = this.title
-      document.querySelector('.title-fixed-subtitle').innerHTML = this.subtitle
+      console.log(this.title);
+      document.querySelector(".title-fixed-title").innerHTML = this.title;
+      document.querySelector(".title-fixed-subtitle").innerHTML =
+        this.subtitle;
     },
     hideTitle() {
-      console.log(this.title)
-      document.querySelector('.title-fixed-title').innerHTML = ''
-      document.querySelector('.title-fixed-subtitle').innerHTML = ''
+      console.log(this.title);
+      document.querySelector(".title-fixed-title").innerHTML = "";
+      document.querySelector(".title-fixed-subtitle").innerHTML = "";
     },
     createRellax() {
-        setTimeout(() => {
-          const slugs = this.slug.replace(/[0-9-]/g, '')
-          const speed = Math.floor(Math.random() * 5) - 2; // generates a random integer between -5 and 5
-      this.rellax = new Rellax('.' +slugs, { speed: speed, center: true });
-    }, "250")
+      setTimeout(() => {
+        const slugs = this.slug.replace(/[0-9-]/g, "");
+        const speed = Math.floor(Math.random() * 5) - 2;
+        this.rellax = new Rellax("." + slugs, { speed: speed, center: true });
+      }, 250);
     },
     destroyRellax() {
       if (this.rellax) {
         this.rellax.destroy();
         this.rellax = null;
       }
-    }
+    },
   },
-
-
-}
-
-
-
-
-
+};
 </script>
 
 
@@ -102,10 +93,9 @@ export default {
       />
     <div class="grid__content pointer-events-none">
       <p
-        v-if="excerpt"
-        class="grid__content-excerpt mb-2 text-sm text-clip overflow-hidden ..."
+        class="grid__content-excerpt mb-2 text-sm text-clip md:hidden overflow-hidden ..."
       >
-        {{ excerpt }}
+        <span v-if="title" class="uppercase">{{ title }}</span>        <span  v-if="subtitle" class="">{{ subtitle }}</span>
       </p>
     </div>
       </NuxtLink>
@@ -225,6 +215,42 @@ h3 {
 
 
 
+
+@media screen and (max-width: 1024px) {
+
+  .grid__content {
+    justify-content: flex-start !important;
+    text-align: left !important;
+    transform: none !important;
+    position: relative !important;
+    left: auto !important;
+    margin-top: 1rem !important;
+  }
+
+  .grid__item__inner {
+    width: 90vw !important;
+    height: auto !important;
+    display: block !important;
+    margin-bottom: 0!important;
+    padding: 1rem;
+  }
+
+  .grid__item__inner:nth-child(even) {
+    margin-right: 0 !important;
+    margin-left: auto !important;
+  }
+
+
+
+  .grid__item__inner a {
+    float: none !important;
+  }
+
+  .grid__item__inner img {
+    margin: 0 !important;
+    position: relative !important;
+  }
+}
 
 
 .grid__item__inner {

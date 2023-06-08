@@ -44,7 +44,7 @@ function resetFilter() {
 <template>
      <div>
         <div class="fixed bottom-0 bg-white p-4 w-full flex justify-between z-50">
-        <div class="form-control flex" >
+        <div class="form-control flex justify-center" >
             <div class="outer flex f-row mr-4" v-for="category in categories">
                 <label class="cursor-pointer flex items-center filter">
                     <input :value="category.slug" v-model="filterBrands" type="checkbox"

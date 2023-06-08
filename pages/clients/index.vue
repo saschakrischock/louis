@@ -1,6 +1,4 @@
 <script  lang="ts" setup>
-import { Vue3Marquee } from 'vue3-marquee'
-import 'vue3-marquee/dist/style.css'
 import { useWpApi } from '~/composables/useWpApi';
 
 const isHover = ref('');
@@ -44,17 +42,15 @@ const { data: blogs, refresh, error } = await useWpApi().getPosts();
 <div>
   <img class="absolute" 
         :src=" isHover " data-not-lazy>
-    <div class="fixed bottom-4">
-        <Vue3Marquee :clone="true" :duration="200" direction="reverse">
-            <div v-for="blog in blogs" :key="blog.id"><span>–</span>
+    <div class="text-center w-full list flex justify-center block mt-8 mb-8 flex-col">
+            <div v-for="blog in blogs" :key="blog.id">
                 <NuxtLink v-on:mouseout="updateValue(title = '')"  v-on:mouseover="updateValue(title = blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url)"
-                class="mr-0 uppercase relative" 
+                class="mr-0  relative" 
                 :to="`projects/${blog.slug}`
                 ">
-                {{ blog.title.rendered }}
+                <div v-html="blog.title.rendered"></div>
                 </NuxtLink>
             </div>
-        </Vue3Marquee>
     </div>
 </div>
 </template>
@@ -65,6 +61,10 @@ const { data: blogs, refresh, error } = await useWpApi().getPosts();
   .image {
     font-size: 30px;
     margin: 0 10px;
+  }
+
+  .list {
+    min-height: calc(100vh - 4rem);
   }
 
   img {

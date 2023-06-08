@@ -46,10 +46,10 @@ function resetFilter() {
 </script>
 <template>
      <div>
-        <div class="fixed bottom-0 bg-white p-4 w-full flex justify-between z-50">
-        <div class="form-control flex" >
+        <div class="fixed bottom-0 content-center bg-white p-4 w-full flex justify-between z-50">
+        <div class="form-control flex justify-center w-full" >
             <div class="outer flex f-row mr-4" v-for="category in categories" >
-                <label class="cursor-pointer f}}lex items-center filter">
+                <label class="cursor-pointer flex items-center filter">
                     <input :value="category.id" v-model="filterBrands" type="checkbox"
                         class="checked:border-blue checked:color-blue checkbox-xs checkbox-primary" />
                     <span :class="{ active: category.id === isCat }"  class="uppercase">{{ category.slug }}</span>
@@ -57,7 +57,9 @@ function resetFilter() {
             </div>
         </div>
 
-            <div class="indicator uppercase hide-mobile">{{ isHover }}</div>
+            <div class="indicator uppercase fixed top-1/2 left-1/2 z-30 pointer-events-none -translate-x-1/2 -translate-y-1/2
+
+">{{ isHover }}</div>
     
          
      <!--
@@ -176,25 +178,25 @@ img {
 .gallery__grid > * { visibility: visible; }
 /* Brings the child items back in, even though the parent is `hidden` */
 
-.gallery__grid > * { transition: filter 150ms linear 100ms }
+.gallery__grid > * { transition: opacity 150ms linear 100ms }
 /* Makes the fades smooth with a slight delay to prevent jumps as the mouse moves between items */
 
 .gallery__grid img > *:hover {
-  filter: none !important;
+  opacity: 1 !important;
 }
 
 .gallery__grid img {
-  transition: filter 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
-.gallery__grid:hover > * img { filter: blur(10px); }
+.gallery__grid:hover > * img { opacity: 0.1; }
 /* Fade out all items when the parent is hovered */
 
-.gallery__grid > *:hover img { filter: none !important; transition-delay: 0ms, 0ms; }
+.gallery__grid > *:hover img { opacity: 1 !important; transition-delay: 0ms, 0ms; }
 
 
   .blur {
-  filter: blur(5px);
+  opacity: 0.1;
 }
 
 </style>

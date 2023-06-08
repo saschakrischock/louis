@@ -13,7 +13,7 @@ export default {
 
 methods: {
     menuToggle() {
-      document.querySelector('.nav-mobile').classList.toggle('active');
+      document.querySelector('.nav-mobile').classList.toggle('active-nav');
     },
   },
 }

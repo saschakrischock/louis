@@ -17,7 +17,7 @@ console.log(blogs);
     <div class="blogs">
 
 
-    <div class="title-fixed text-center">
+    <div class="title-fixed text-center lg:block hidden">
       <div class="title-fixed-title uppercase"></div>
       <div class="title-fixed-subtitle capitalize"></div>
     </div>

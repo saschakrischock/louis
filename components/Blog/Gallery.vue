@@ -217,6 +217,10 @@ section:nth-child(2) {
 
 @media screen and (max-width: 768px) {
 
+  .hide-mobile {
+    display: none !important;
+  }
+
   .single-project-top {
     background-color: #fff !important;
   }

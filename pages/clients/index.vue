@@ -67,6 +67,10 @@ const { data: blogs, refresh, error } = await useWpApi().getPosts();
     min-height: calc(100vh - 4rem);
   }
 
+  .list a:hover {
+    color: blue;
+  }
+
   img {
     opacity: 1 !important;
   }

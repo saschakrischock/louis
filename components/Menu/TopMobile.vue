@@ -30,7 +30,7 @@ onBeforeRouteLeave(() => {
           <NuxtLink to="/clients">Clients</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/contact">Contact</NuxtLink>
+          <a href="mailto:contact@louisgibson.co.uk" >Contact</a>
         </li>
       </ul>
   </nav>

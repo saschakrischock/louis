@@ -9,6 +9,10 @@
   }
 
 
+  .text-sm {
+    font-size: 0.75rem !important;
+  }
+
   .gallery__grid > *:hover { filter: blur(0) !important; transition-delay: 0ms, 0ms; }
   
 body{

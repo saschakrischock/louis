@@ -3,6 +3,7 @@
 import { useWpApi } from '~~/composables/useWpApi';
  
 
+
 const { data: blogs, refresh, error } = await useWpApi().getPosts();
 console.log(blogs);
 </script>
@@ -17,14 +18,14 @@ console.log(blogs);
     <div class="blogs">
 
 
-    <div class="title-fixed text-center lg:block hidden">
-      <div class="title-fixed-title uppercase"></div>
-      <div class="title-fixed-subtitle capitalize"></div>
+    <div class="title-fixed text-center hidden lg:block hidden">
+      <div class="title-fixed-title uppercase hidden"></div>
+      <div class="title-fixed-subtitle hidden capitalize"></div>
     </div>
    
 
       <div>
-        <div class="gallery__grid rellax">
+        <div class="gallery__grid__off rellax">
           <BlogGrid class="p-4"
             v-for="blog in blogs"
             :key="blog.id"
@@ -111,10 +112,11 @@ console.log(blogs);
 
 
 .grid__content {
-  position: fixed;
+  padding: 0 !important;
+  /*position: fixed;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);*/
 }
 
 .gallery__grid { visibility: hidden; }

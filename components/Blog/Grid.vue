@@ -93,7 +93,7 @@ export default {
       />
     <div class="grid__content pointer-events-none">
       <p
-        class="grid__content-excerpt mb-2 text-sm text-clip md:hidden overflow-hidden ..."
+        class="grid__content-excerpt mb-2 text-sm text-clip  overflow-hidden ..."
       >
         <span v-if="title" class="uppercase">{{ title }}</span>        <span  v-if="subtitle" class="">{{ subtitle }}</span>
       </p>
@@ -144,24 +144,46 @@ h3 {
 }
 
 
-.sandroglobalstorewindows img, .youngthugspiderpopupstoreevent img, .harpersbazaarusamiumiu img {
+.sandroglobalstorewindows a, .youngthugspiderpopupstoreevent a, .harpersbazaarusamiumiu a {
   margin-left: -3vw !important;
-  margin-bottom: 10vw;
+  margin-bottom: 0 !important;
+}
+
+
+
+.sandroglobalstorewindows a .grid__content, .youngthugspiderpopupstoreevent a .grid__content, .harpersbazaarusamiumiu a .grid__content {
+
 }
 
 .menmagazinepradaeditorial img, .yinchair img {
   margin-left: 5vw !important;
 }
 
+.menmagazinepradaeditorial .grid__content, .yinchair .grid__content {
+  margin-left: 5vw !important;
+}
+
+
 .pamxpumacampaign img, .byredofragrancecampaign img {
   margin-left: -10vw !important;
 }
+
+.pamxpumacampaign .grid__content, .byredofragrancecampaign .grid__content {
+  margin-left: -10vw !important;
+}
+
+.flowerstogetherpartmetzracine {
+  width: 25vw !important;
+}
+
 
 .sandroglobalstorewindows {
   margin-bottom: 10vh;
   margin-top: 10vh;
 }
 
+
+@media screen and (min-width: 1025px) {
 .gallery__grid img > *:hover {
   filter: none !important;
 }
@@ -172,7 +194,14 @@ h3 {
 .gallery__grid img > img:hover img { filter: none !important; transition-delay: 0ms, 0ms; }
 /* Fade in the currently hovered item */
 
+ .grid__content {
+opacity: 0;
+}
 
+.grid__item:hover .grid__content {
+opacity: 1;
+}
+}
 
 .grid__item {
 
@@ -191,18 +220,40 @@ h3 {
   padding: 2rem;
 }
 
+.grid__item__inner:nth-child(2n) .grid__content {
+  padding-left: 2rem;
+  left:0;
+  bottom:0;
+}
+
 .grid__item__inner:nth-child(7n) {
   padding: 4rem;
   /*margin-left: 20vw;*/
     margin-bottom: 30vw;
 }
 
+.grid__item__inner:nth-child(7n) .grid__content {
+  padding-left: 4rem;
+  bottom: 1rem;
+    left: 0;
+}
+
 .grid__item__inner:nth-child(4n) {
   padding: 3rem;
 }
 
+.grid__item__inner:nth-child(4n) .grid__content {
+  padding-left: 3rem;
+  bottom: 1rem !important;
+}
+
 .grid__item__inner:nth-child(5n) {
   padding: 3rem;
+}
+
+.grid__item__inner:nth-child(5n) .grid__content {
+  padding-left: 2rem;
+    bottom: 1rem;
 }
 
 
@@ -210,6 +261,14 @@ h3 {
   padding: 3rem;
 }
 
+.grid__item__inner:nth-child(7n) .grid__content {
+  padding-left: 3rem;
+}
+
+
+.grid__content {
+margin-top: 0.2rem;
+}
 
 
 
@@ -218,13 +277,18 @@ h3 {
 
 @media screen and (max-width: 1024px) {
 
-  .grid__content {
+  #__nuxt .grid__content {
+    opacity: 1 !important;
+    font-size: 12px;
+    bottom: inherit !important;
+    padding-left: 0 !important;
+    margin-top: 0.5rem !important;
+    margin-left: 0 !important;
     justify-content: flex-start !important;
     text-align: left !important;
     transform: none !important;
     position: relative !important;
     left: auto !important;
-    margin-top: 1rem !important;
   }
 
   .grid__item__inner {
@@ -256,7 +320,9 @@ h3 {
 .grid__item__inner {
  /* width: 40vw;*/
  width: 20vw;
- height: 70vh;
+
+ /*height: 70vh;*/
+
  /*margin-bottom: 70vh;*/
   display: inline-block;
 }
@@ -264,13 +330,13 @@ h3 {
 .grid__item__inner:nth-child(even) {
   margin-right: 0;
   width: 30vw;
-  height: 30vh;
-  /*margin-bottom: 30vh;*/
+ /* height: 30vh; */
+  margin-bottom: 30vh;
   /*  margin-left: auto;*/
 }
 
 .grid__item__inner:nth-child(even) img {
-  margin-left: -5vw;
+  /*margin-left: -5vw;*/
 }
 
 .gallery__grid {
@@ -281,6 +347,6 @@ h3 {
 .grid__item img {
   width: 100%;
   height: auto;
-  position: absolute;
+  /*position: absolute;*/
 }
 </style>

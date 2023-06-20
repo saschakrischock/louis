@@ -10,7 +10,7 @@
 
 
   .text-sm {
-    font-size: 0.75rem !important;
+    font-size: 1.25rem !important;
   }
 
   .gallery__grid > *:hover { filter: blur(0) !important; transition-delay: 0ms, 0ms; }
@@ -20,7 +20,7 @@ body{
     -webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: antialiased;
 	font-smoothing: antialiased;
-  font-size: 0.75rem;
+  font-size: 1.25rem;
 }
 
 

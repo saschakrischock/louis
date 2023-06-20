@@ -6,12 +6,11 @@ const isHover = ref('');
 console.log('object' + isHover)
 
 const updateValue = (title) => {
-  isHover.value = title;
   const img = document.querySelector(`img`);
   if (img) {
     const imgRect = img.getBoundingClientRect();
     const margin = 50;
-    const maxBottom = window.innerHeight/2 - imgRect.height;
+    const maxBottom = window.innerHeight - imgRect.height;
     const maxRight = window.innerWidth - imgRect.width;
     let bottom = Math.floor(Math.random() * maxBottom);
     let right = Math.floor(Math.random() * maxRight);
@@ -31,7 +30,10 @@ const updateValue = (title) => {
     img.style.bottom = `${bottom}px`;
     img.style.right = `${right}px`;
   }
+
+  isHover.value = title;
 };
+
 
 const { data: blogs, refresh, error } = await useWpApi().getPosts();
 
@@ -44,12 +46,17 @@ const { data: blogs, refresh, error } = await useWpApi().getPosts();
         :src=" isHover " data-not-lazy>
     <div class="text-center w-full list flex justify-center block mt-8 mb-8 flex-col">
             <div v-for="blog in blogs" :key="blog.id">
-                <NuxtLink v-on:mouseout="updateValue(title = '')"  v-on:mouseover="updateValue(title = blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url)"
+                <NuxtLink v-if="!blog.acf.showclient"  v-on:mouseout="updateValue(title = 'data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%3E%3C%2Fsvg%3E')"  v-on:mouseover="updateValue(title = blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url)"
                 class="mr-0  relative" 
                 :to="`projects/${blog.slug}`
                 ">
-                <div v-html="blog.title.rendered"></div>
+                <div v-html="blog.title.rendered">
+             </div>
+
                 </NuxtLink>
+            
+
+             
             </div>
     </div>
 </div>
@@ -66,6 +73,11 @@ const { data: blogs, refresh, error } = await useWpApi().getPosts();
   .list {
     min-height: calc(100vh - 4rem);
   }
+
+  
+  img[src=""] {
+background-color: red;
+}
 
   .list a:hover {
     color: blue;

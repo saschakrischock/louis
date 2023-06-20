@@ -257,6 +257,14 @@ opacity: 1;
 }
 
 
+.acrylicpanelchair {
+  margin-bottom: 20rem;
+}
+
+.grid__item__inner:nth-child(6n) {
+  margin-left: 10vw;
+}
+
 .grid__item__inner:nth-child(7n) {
   padding: 3rem;
 }
@@ -267,7 +275,7 @@ opacity: 1;
 
 
 .grid__content {
-  font-size: 0.75rem !important;
+  font-size: 1.25rem !important;
 margin-top: 0.2rem;
 }
 

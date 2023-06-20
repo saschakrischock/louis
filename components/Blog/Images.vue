@@ -115,12 +115,13 @@ section {
 section {
   display: inline-block;
   width: max-content;
-  margin-top: 2.5rem;
-  height: calc(100% - 10.4rem);
+  margin-top: 51px;
+    height: calc(100% - 96px);
 }
 
 section img {
-  width: auto;
+  width: 100vw;
+  object-fit: contain;
     height: calc(100%);
 }
 }

@@ -7,12 +7,24 @@ const isCat = ref('');
 
 console.log('object' + isCat)
 
+const activateLink = (brand) => {
+    brand.isClicked = true;
+
+    // Delay before enabling the link (adjust the delay duration as needed)
+    setTimeout(() => {
+      brand.isLinkEnabled = true;
+    }, 300); // 300 milliseconds delay (adjust as needed)
+
+    // Perform any other desired actions on click
+    // ...
+  };
+
 const updateValue = (title) => {
   isHover.value = title;
 };
 
 const updateCat = (cat) => {
-  isCat.value = cat;
+    isCat.value = cat;
 };
 
 useHead({
@@ -73,12 +85,14 @@ function resetFilter() {
         
                 <div  v-if="filterBrands.length > 0" v-bind:class="{ 'pointer-events-none': !filterBrands.includes(brand.categories[0]) && filterBrands.length > 0 }"  class="outer" v-for="brand in brands">
 
+                  <div class="a-over" v-on:mouseover="updateValue(title = brand.title.rendered)">
                   <NuxtLink  v-bind:class="{ 'pointer-events-none': !filterBrands.includes(brand.categories[0]) && filterBrands.length > 0 }" :to="`projects/${brand.slug}`">
           
              <img loading="lazy" v-on:mouseover="updateValue(title = brand.title.rendered)" :src="brand._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url" v-if="filterBrands.includes(brand.categories[0]) && filterBrands.length > 0">
          
              <img loading="lazy " :src="brand._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url" v-else style="opacity:0.3">
             </Nuxtlink>
+            </div>
 
                 </div>
            
@@ -87,10 +101,12 @@ function resetFilter() {
     
                 <div v-else class="outer" v-for="brand in brands">
                    
-                  <NuxtLink v-on:mouseout="updateCat(cat = '')" v-on:mouseover="updateCat(cat = brand.categories[0])" :to="`projects/${brand.slug}`">
+                  <div class="a-over" v-on:click="activateLink(brand)"  v-on:mouseout="updateValue(title = '')"    v-on:mouseover="updateValue(title = brand.title.rendered)">
+                  <NuxtLink :class="{ 'pointer-events-no': !brand.isClicked }" v-on:mouseout="updateCat(cat = '')" v-on:mouseover="updateCat(cat = brand.categories[0])" :to="`projects/${brand.slug}`">
                                
-                          <img loading="lazy" v-on:mouseout="updateValue(title = '')"    v-on:mouseover="updateValue(title = brand.title.rendered)" :src="brand._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url">
+                          <img loading="lazy"  :src="brand._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url">
                   </Nuxtlink>
+                </div>
     
                 </div>
       
@@ -120,6 +136,16 @@ function resetFilter() {
 
 
 @media only screen and (max-width: 768px) {
+
+  .pointer-events-no {
+  pointer-events: none;
+
+  }
+
+
+
+
+
 
   .hide-mobile {
     display: none;

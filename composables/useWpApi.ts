@@ -48,12 +48,21 @@ export function useWpApi() {
     return get<any>(`categories?slug=${slug}`);
   };
 
+  
+  const getClients = async (
+    fields: string = "client"
+  ) => {
+    let query: string = `pages?slug=clients`;
+    return get<Post[]>(query);
+  };
+
   return {
     get,
     getPosts,
     getPost,
     getCatgories,
     getCatgory,
-    getACF
+    getACF,
+    getClients
   };
 };

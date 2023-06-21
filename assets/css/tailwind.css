@@ -23,6 +23,16 @@ body{
   font-size: 1.25rem;
 }
 
+@media screen and (max-width: 1024px) {
+  body,   .text-sm, .grid__content {
+  font-size: 0.75rem !important;
+  }
+
+  nav, .nav {
+    font-size: 1.25rem;
+  }
+}
+
 
 .lazyLoad {
   opacity: 0;

@@ -275,7 +275,6 @@ opacity: 1;
 
 
 .grid__content {
-  font-size: 1.25rem !important;
 margin-top: 0.2rem;
 }
 

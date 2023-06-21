@@ -37,14 +37,34 @@ const updateValue = (title) => {
 
 const { data: blogs, refresh, error } = await useWpApi().getPosts();
 
+const { data: cl } = await useWpApi().getClients();
+
 </script>
 
 
 <template>
 <div>
+  <div v-for="client in cl[0].acf.clients" :key="client.client">
+    
+</div>
   <img class="absolute" 
         :src=" isHover " data-not-lazy>
-    <div class="text-center w-full list flex justify-center block mt-8 mb-8 flex-col">
+        <div class="text-center w-full list flex justify-center block mt-8 mb-8 flex-col">
+          <div v-for="client in cl[0].acf.clients" :key="client.client">
+                <NuxtLink  v-on:mouseout="updateValue(title = 'data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%3E%3C%2Fsvg%3E')"  v-on:mouseover="updateValue(title = client.client_image.sizes.medium_large)"
+                class="mr-0  relative" 
+                :to="client.client_link
+                ">
+                {{client.client}}
+       
+
+                </NuxtLink>
+            
+
+             
+            </div>
+    </div>
+   <!-- <div class="text-center w-full list flex justify-center block mt-8 mb-8 flex-col">
             <div v-for="blog in blogs" :key="blog.id">
                 <NuxtLink v-if="!blog.acf.showclient"  v-on:mouseout="updateValue(title = 'data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%3E%3C%2Fsvg%3E')"  v-on:mouseover="updateValue(title = blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.medium?.source_url)"
                 class="mr-0  relative" 
@@ -58,7 +78,7 @@ const { data: blogs, refresh, error } = await useWpApi().getPosts();
 
              
             </div>
-    </div>
+    </div>-->
 </div>
 </template>
   

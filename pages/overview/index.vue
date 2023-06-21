@@ -181,7 +181,7 @@ img {
 .gallery__grid > * { transition: opacity 150ms linear 100ms }
 /* Makes the fades smooth with a slight delay to prevent jumps as the mouse moves between items */
 
-@media screen and (min-width: 1025px) {
+
 .gallery__grid img > *:hover {
   opacity: 1 !important;
 }
@@ -198,7 +198,6 @@ img {
 
   .blur {
   opacity: 0.1;
-}
 }
 
 </style>

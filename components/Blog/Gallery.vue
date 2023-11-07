@@ -116,36 +116,17 @@ export default {
 </script>
 
 
+
+
+
 <template>
   <div>
-  <div class="gallery" ref="gallery">
-    <div class="scroll-indicator top-0 fixed h-2 bg-black" :style="{ width: scrollProgress + '%' }"></div> <!-- Updated width binding -->
-    <BlogImages/>  
-    </div>
-    <div class="bottom-3 fixed left-2 z-50 cursor-pointer hide-mobile">
-    <button id="scrollBackButton" @mousedown="startScrollBack" @mouseup="stopScrollBack" @mouseout="stopScrollBack">
-      <svg style="transform: rotate(-180deg)" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<mask id="mask0_31_247" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-<rect width="24" height="24" transform="matrix(-1 0 0 1 24 0)" fill="#D9D9D9"/>
-</mask>
-<g mask="url(#mask0_31_247)">
-<path d="M12 20L20 12L12 4L10.575 5.4L16.175 11H4V13H16.175L10.575 18.6L12 20Z" fill="#1C1B1F"/>
-</g>
-</svg>
-</button> <!-- Added scroll back button -->
 
-    <button id="scrollButton" @mousedown="startScroll" @mouseup="stopScroll" @mouseout="stopScroll">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<mask id="mask0_31_247" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-<rect width="24" height="24" transform="matrix(-1 0 0 1 24 0)" fill="#D9D9D9"/>
-</mask>
-<g mask="url(#mask0_31_247)">
-<path d="M12 20L20 12L12 4L10.575 5.4L16.175 11H4V13H16.175L10.575 18.6L12 20Z" fill="#1C1B1F"/>
-</g>
-</svg>
-    </button> <!-- Added button element -->
-  </div>
-    </div>
+
+    <BlogImages/>  
+
+
+</div>
 </template>
 
 

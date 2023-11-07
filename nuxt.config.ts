@@ -17,7 +17,7 @@ export default defineNuxtConfig({
 
 
 
-  modules: ["@nuxtjs/tailwindcss", "nuxt3-lazy-load"],
+  modules: ["@nuxtjs/tailwindcss", "nuxt3-lazy-load", "nuxt-swiper"],
   runtimeConfig: {
     public: {
       wpUri: process.env.WP_URI,

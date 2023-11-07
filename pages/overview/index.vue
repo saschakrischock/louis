@@ -58,7 +58,7 @@ function resetFilter() {
 </script>
 <template>
      <div>
-        <div class="fixed md:top-0 md:bottom-auto  bottom-0 content-center md:bg-transparent bg-white p-4 w-full flex justify-between z-50">
+        <div class="fixed md:top-0 md:bottom-auto md:w-auto  bottom-0 content-center md:bg-transparent bg-white p-4 w-full flex justify-between z-50">
         <div class="form-control md:ml-[8.1rem] flex md:justify-start justify-center w-full" >
             <div class="outer flex f-row mr-4" v-for="category in categories" >
                 <label class="cursor-pointer flex items-center filter">
@@ -69,7 +69,7 @@ function resetFilter() {
             </div>
         </div>
 
-            <div class="indicator uppercase fixed top-1/2 left-1/2 z-30 pointer-events-none -translate-x-1/2 -translate-y-1/2
+            <div class="indicator capitalize fixed top-1/2 left-1/2 z-30 pointer-events-none -translate-x-1/2 -translate-y-1/2
 
 ">{{ isHover }}</div>
     

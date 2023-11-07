@@ -54,11 +54,29 @@ const post = posts.value[0];
 </script>
 <template>
 
+<div>
+<Swiper
+    :modules="[SwiperMousewheel, SwiperNavigation, SwiperFreeMode]"
+    :slides-per-view="1"
+    :loop="false"
+    :speed="1000"
+    :space-between="20"
+    :navigation="true"
+    :mousewheel="true"
+    :centeredSlides="true"
+  :breakpoints="{
+    768: {
+      freeMode: true,
+      slidesPerView: 'auto',
+      centeredSlides: false,
+    },
+    }"
+  >
+    <SwiperSlide v-for="image in post.acf.gallery" :key="image.gallery_item">
+      <img loading="lazy" :height="image.gallery_item.height" :width="image.gallery_item.width" :src="image.gallery_item.sizes.large" :alt="image.alt">
+    </SwiperSlide>
+  </Swiper>
 
-
-  <section v-for="image in post.acf.gallery" :key="image.gallery_item">
-  <img loading="lazy" :height="image.gallery_item.height" :width="image.gallery_item.width" :src="image.gallery_item.sizes.large" :alt="image.alt">
-  </section>
 
 
 
@@ -69,7 +87,7 @@ const post = posts.value[0];
       <!-- Blog Image  -->
 
 
-    
+    </div>
 </template>
 
 <style>

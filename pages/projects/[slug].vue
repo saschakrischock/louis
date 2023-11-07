@@ -62,11 +62,11 @@ const post = posts.value[0];
 
 <div>
   <div class="single-project-top p-4 bg-transparent">
-    <div @click="goToPrev">LOUIS GIBSON</div>
 
-    <div class="hide-mobile"><span class="uppercase">{{ post.title.rendered }}</span> <soan v-if="post.acf.subtitle"> {{ post.acf.subtitle }}</soan></div>
 
-    <div class="click" @click="goToPrev">CLOSE</div>
+    <div class="hide-mobile"><span class="capitalize font-black mr-2">{{ post.title.rendered }}</span> <span v-if="post.acf.subtitle"> {{ post.acf.subtitle }}</span></div>
+
+    <!--<div class="click" @click="goToPrev">CLOSE</div>-->
   </div>
   
 
@@ -82,17 +82,9 @@ const post = posts.value[0];
 
 
       <div class="single-project-bottom p-4">
-        <div class="hide-desktop"><span class="uppercase">{{ post.title.rendered }}</span> <soan v-if="post.acf.subtitle"> {{ post.acf.subtitle }}</soan></div>
+        <div class="hide-desktop"><span class="capitalize font-black mr-2">{{ post.title.rendered }}</span> <soan v-if="post.acf.subtitle"> {{ post.acf.subtitle }}</soan></div>
         <div class="scroll">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-v-df274100="" style="transform: rotate(-180deg);"><mask id="mask0_31_247" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24" data-v-df274100="" style="mask-type: alpha;"><rect width="24" height="24" transform="matrix(-1 0 0 1 24 0)" fill="#D9D9D9" data-v-df274100=""></rect></mask><g mask="url(#mask0_31_247)" data-v-df274100=""><path d="M12 20L20 12L12 4L10.575 5.4L16.175 11H4V13H16.175L10.575 18.6L12 20Z" fill="#1C1B1F" data-v-df274100=""></path></g></svg>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<mask id="mask0_31_247" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-<rect width="24" height="24" transform="matrix(-1 0 0 1 24 0)" fill="#D9D9D9"/>
-</mask>
-<g mask="url(#mask0_31_247)">
-<path d="M12 20L20 12L12 4L10.575 5.4L16.175 11H4V13H16.175L10.575 18.6L12 20Z" fill="#1C1B1F"/>
-</g>
-</svg>
+
 
         </div>
       </div>
@@ -130,9 +122,10 @@ align-items: center;
 
 .single-project-top{
   position: fixed;
-  width: 100vw;
-  top: 0;
-  left: 0;
+  width: auto;
+  bottom: 0;
+  transform: translateX(-50%);
+  left: 50%;
   z-index: 100;
   display: flex;
   justify-content: space-between;

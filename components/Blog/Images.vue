@@ -73,7 +73,7 @@ const post = posts.value[0];
     }"
   >
     <SwiperSlide v-for="image in post.acf.gallery" :key="image.gallery_item">
-      <img loading="lazy" :height="image.gallery_item.height" :width="image.gallery_item.width" :src="image.gallery_item.sizes.large" :alt="image.alt">
+      <img  class="still-loading" loading="lazy" :height="image.gallery_item.height" :width="image.gallery_item.width" :src="image.gallery_item.sizes.large" :alt="image.alt">
     </SwiperSlide>
   </Swiper>
 
@@ -104,9 +104,7 @@ const post = posts.value[0];
   opacity: 0;
 }
 
-.lazyload {
-  opacity: 0;
-}
+
 
 .isLoading {
   background-color: #ddd;

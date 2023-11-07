@@ -101,7 +101,7 @@ console.log(blogs);
 
 
 
-.lazyLoad, img {
+.lazyLoad img {
   opacity: 0;
   transition: none;
 }

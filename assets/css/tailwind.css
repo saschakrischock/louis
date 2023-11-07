@@ -40,6 +40,19 @@
 }
 
 
+
+.still-loading {
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.lazyLoad {
+  background-color: #fff !important;
+  opacity: 0;
+}
+
+
+
 .swiper-button-next {
   left: 2.5rem !important;
   right: inherit !important;
@@ -169,10 +182,6 @@ body{
 
 
 
-.lazyLoad {
-  opacity: 0;
-  transition: none;
-}
 
 .isLoaded {
   opacity: 1;

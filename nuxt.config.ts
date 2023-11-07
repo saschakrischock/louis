@@ -12,6 +12,7 @@ export default defineNuxtConfig({
       titleTemplate: "%s - Louis",
       meta: [{ name: "description", content: "Louis" }],
     },
+    
   },
 
 

@@ -89,13 +89,13 @@ export default {
         :alt="title"
         :width="width"
         :height="height"
-        class="object-cover w-full h-full "
+        class="object-cover w-full h-full still-loading"
       />
     <div class="grid__content mt-2 pointer-events-none">
       <p
         class="grid__content-excerpt flex flex-col text-sm text-clip  overflow-hidden ..."
       >
-        <span v-if="title" class=" font-black">{{ title }}</span>        <span  v-if="subtitle" class="">{{ subtitle }}</span>
+        <span v-if="title" class="ue font-black">{{ title }}</span>        <span  v-if="subtitle" class="">{{ subtitle }}</span>
       </p>
     </div>
       </NuxtLink>

@@ -1,5 +1,4 @@
 <script>
-import Rellax from "rellax";
 
 export default {
   props: {
@@ -34,11 +33,11 @@ export default {
   },
   mounted() {
     if (window.innerWidth >= 1024) {
-      this.createRellax();
+      /*this.createRellax();*/
     }
   },
   beforeUnmount() {
-    this.destroyRellax();
+    /*this.destroyRellax();*/
   },
   methods: {
     logTitle() {
@@ -52,6 +51,7 @@ export default {
       document.querySelector(".title-fixed-title").innerHTML = "";
       document.querySelector(".title-fixed-subtitle").innerHTML = "";
     },
+    /*
     createRellax() {
       setTimeout(() => {
         const slugs = this.slug.replace(/[0-9-]/g, "");
@@ -64,7 +64,7 @@ export default {
         this.rellax.destroy();
         this.rellax = null;
       }
-    },
+    },*/
   },
 };
 </script>
@@ -91,11 +91,11 @@ export default {
         :height="height"
         class="object-cover w-full h-full "
       />
-    <div class="grid__content pointer-events-none">
+    <div class="grid__content mt-2 pointer-events-none">
       <p
-        class="grid__content-excerpt mb-2 text-sm text-clip  overflow-hidden ..."
+        class="grid__content-excerpt flex flex-col text-sm text-clip  overflow-hidden ..."
       >
-        <span v-if="title" class="uppercase">{{ title }}</span>        <span  v-if="subtitle" class="">{{ subtitle }}</span>
+        <span v-if="title" class=" font-black">{{ title }}</span>        <span  v-if="subtitle" class="">{{ subtitle }}</span>
       </p>
     </div>
       </NuxtLink>
@@ -178,7 +178,7 @@ h3 {
 
 
 .sandroglobalstorewindows {
-  margin-bottom: 10vh;
+  margin-bottom: 40rem !important;
   margin-top: 10vh;
 }
 
@@ -274,9 +274,7 @@ opacity: 1;
 }
 
 
-.grid__content {
-margin-top: 0.2rem;
-}
+
 
 
 

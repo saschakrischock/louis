@@ -58,13 +58,13 @@ function resetFilter() {
 </script>
 <template>
      <div>
-        <div class="fixed bottom-0 content-center bg-white p-4 w-full flex justify-between z-50">
-        <div class="form-control flex justify-center w-full" >
+        <div class="fixed md:top-0 md:bottom-auto  bottom-0 content-center md:bg-transparent bg-white p-4 w-full flex justify-between z-50">
+        <div class="form-control md:ml-[8.1rem] flex md:justify-start justify-center w-full" >
             <div class="outer flex f-row mr-4" v-for="category in categories" >
                 <label class="cursor-pointer flex items-center filter">
                     <input :value="category.id" v-model="filterBrands" type="checkbox"
                         class="checked:border-blue checked:color-blue checkbox-xs checkbox-primary" />
-                    <span :class="{ active: category.id === isCat }"  class="uppercase">{{ category.slug }}</span>
+                    <span :class="{ active: category.id === isCat }"  class="capitalize">{{ category.slug }}</span>
                 </label>
             </div>
         </div>
@@ -81,7 +81,7 @@ function resetFilter() {
             </button>-->
          
         </div>
-            <div class="grid grid-cols-14 gap-4 p-4 mt-4 items-center justify-center gallery__grid">
+            <div class="grid grid-cols-14 gap-4 p-4 md:pt-2 mt-4 items-center justify-center gallery__grid">
         
                 <div  v-if="filterBrands.length > 0" v-bind:class="{ 'pointer-events-none': !filterBrands.includes(brand.categories[0]) && filterBrands.length > 0 }"  class="outer" v-for="brand in brands">
 
@@ -158,6 +158,7 @@ function resetFilter() {
 
 input[type="checkbox"]:checked + span {
   color: blue;
+  font-style: italic;
 }
 
 /* "page" is hardcoded in nuxt3 page transitions atm */
@@ -168,6 +169,7 @@ input[type="checkbox"]:checked + span {
 
 .active {
   color: blue;
+  font-style: italic;
 }
 
 .fade-enter-active, .fade-leave-active {

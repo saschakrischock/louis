@@ -62,7 +62,7 @@ const post = posts.value[0];
 
 <div>
   <div class="single-project-top p-4 bg-transparent">
-    <div @click="goToPrev">LG</div>
+    <div @click="goToPrev">LOUIS GIBSON</div>
 
     <div class="hide-mobile"><span class="uppercase">{{ post.title.rendered }}</span> <soan v-if="post.acf.subtitle"> {{ post.acf.subtitle }}</soan></div>
 

@@ -59,15 +59,15 @@ export default {
     // Start the timer initially
     startTimer();
 
-    this.createRellax();
+    /*this.createRellax();*/
   },
   beforeUnmount() {
-    this.destroyRellax();
+    /*this.destroyRellax();*/
   },
   methods: {
     createRellax() {
         setTimeout(() => {
-      this.rellax = new Rellax(".rellax", { speed: -10 });
+     /* this.rellax = new Rellax(".rellax", { speed: -10 });*/
     }, "250")
     },
     destroyRellax() {

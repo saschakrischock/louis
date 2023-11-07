@@ -3,24 +3,69 @@
 @tailwind utilities;
 
 
+@font-face {
+  font-family: 'Signifier';
+  src: url('/assets/fonts/Signifier-BlackItalic.woff2') format('woff2'),
+      url('/assets/fonts/Signifier-BlackItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Signifier';
+  src: url('/assets/fonts/Signifier-Light.woff2') format('woff2'),
+      url('/assets/fonts/Signifier-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Signifier';
+  src: url('/assets/fonts/Signifier-Black.woff2') format('woff2'),
+      url('/assets/fonts/Signifier-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Signifier';
+  src: url('/assets/fonts/Signifier-LightItalic.woff2') format('woff2'),
+      url('/assets/fonts/Signifier-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+
 
   .router-link-active {
     color: blue;
+    font-style: italic;
+  }
+
+  .logo {
+    font-style: normal !important;
   }
 
 
   .text-sm {
-    font-size: 1.25rem !important;
+    line-height: 1rem !important;
+    font-size: 0.75rem !important;
   }
 
   .gallery__grid > *:hover { filter: blur(0) !important; transition-delay: 0ms, 0ms; }
   
 body{
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Signifier', Times, serif;
     -webkit-font-smoothing: antialiased;
+    font-weight: 300;
 	-moz-osx-font-smoothing: antialiased;
 	font-smoothing: antialiased;
-  font-size: 1.25rem;
+  font-size: 0.75rem;
 }
 
 @media screen and (max-width: 1024px) {
@@ -29,7 +74,7 @@ body{
   }
 
   nav, .nav {
-    font-size: 1.25rem;
+    font-size: 0.75rem;
   }
 }
 

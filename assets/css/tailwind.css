@@ -86,7 +86,7 @@ body{
     font-weight: 300;
 	-moz-osx-font-smoothing: antialiased;
 	font-smoothing: antialiased;
-  font-size: 0.75rem;
+  font-size: 1rem;
 }
 
 
@@ -130,13 +130,13 @@ body{
 }
 
   nav, .nav {
-    font-size: 0.75rem;
+    font-size: 1rem;
   }
 }
 
 .swiper {
-  height: calc(100% - 6rem);
-  margin-top: 3rem;
+  height: calc(100% - 6.8rem);
+  margin-top: 3.4rem;
   overflow: visible !important;
   position: absolute !important;
 }

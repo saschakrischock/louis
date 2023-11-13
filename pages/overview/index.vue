@@ -81,7 +81,7 @@ function resetFilter() {
             </button>-->
          
         </div>
-            <div class="grid grid-cols-14 gap-4 p-4 md:pt-2 mt-4 items-center justify-center gallery__grid">
+            <div class="grid grid-cols-14 gap-4 p-4 md:pt-4 mt-4 items-center justify-center gallery__grid">
         
                 <div  v-if="filterBrands.length > 0" v-bind:class="{ 'pointer-events-none': !filterBrands.includes(brand.categories[0]) && filterBrands.length > 0 }"  class="outer" v-for="brand in brands">
 

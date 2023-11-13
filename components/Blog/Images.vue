@@ -43,6 +43,8 @@ useHead({
   ],
 });
 
+
+
 const { data: posts } = await useWpApi().getPost(params.slug as string);
 console.log(posts)
 const post = posts.value[0];

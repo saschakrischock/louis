@@ -148,6 +148,9 @@ align-items: center;
 display: flex !important;
 position: absolute !important;
 }
+.single-project-top {
+  display: none !important;
+}
 }
 
 .blog__content {

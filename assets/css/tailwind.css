@@ -97,6 +97,10 @@ body{
 
 @media screen and (max-width: 1024px) {
 
+  .container-full {
+    width: 100vw !important;
+  }
+
   .swiper-button-prev {
     right: 2.5rem !important;
     left: inherit !important;

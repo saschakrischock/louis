@@ -4,11 +4,6 @@
 import { onBeforeRouteLeave, onBeforeRouteUpdate } from 'vue-router'
 import { ref } from 'vue'
 
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-gsap.registerPlugin(ScrollTrigger)
-
-
 
 
 
@@ -55,7 +50,7 @@ const post = posts.value[0];
 <template>
 
 <div>
-<Swiper
+<Swiper 
     :modules="[SwiperMousewheel, SwiperNavigation, SwiperFreeMode]"
     :slides-per-view="1"
     :loop="false"

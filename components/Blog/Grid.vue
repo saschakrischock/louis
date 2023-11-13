@@ -74,12 +74,15 @@ export default {
 
 
 
-<div    @mouseover="logTitle"  @mouseleave="hideTitle" :class="slugsimple"  class="grid__item__inner rellax" >
+<div  :width="width"
+        :height="height"    @mouseover="logTitle"  @mouseleave="hideTitle" :class="slugsimple"  class="grid__item__inner rellax" >
 
 
 
     <NuxtLink data-scroll   
         v-if="slug" 
+        :width="width"
+        :height="height"
         class="grid__item"
         :to="`projects/${slug}`"
         >

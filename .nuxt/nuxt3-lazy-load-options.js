@@ -3,7 +3,7 @@ export const options = {
   "videos": true,
   "audios": true,
   "iframes": true,
-  "native": true,
+  "native": false,
   "directiveOnly": false,
   "defaultImage": false,
   "loadingClass": "isLoading",

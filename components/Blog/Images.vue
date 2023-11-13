@@ -44,6 +44,12 @@ useHead({
 });
 
 
+const goToNext = () => {
+  if (window.innerWidth < 1025) {
+    document.querySelector('.swiper-button-next').click();
+  }
+
+}
 
 const { data: posts } = await useWpApi().getPost(params.slug as string);
 console.log(posts)
@@ -52,7 +58,7 @@ const post = posts.value[0];
 <template>
 
 <div>
-<Swiper 
+<Swiper @swiper="swiper" @click="goToNext" 
     :modules="[SwiperMousewheel, SwiperNavigation, SwiperFreeMode]"
     :slides-per-view="1"
     :loop="false"

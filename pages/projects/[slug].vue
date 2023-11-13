@@ -146,7 +146,7 @@ align-items: center;
 @media screen and (max-width: 768px) {
 .single-project-bottom {
 display: flex !important;
-position: fixed !important;
+position: absolute !important;
 }
 }
 

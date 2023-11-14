@@ -44,6 +44,10 @@ useHead({
 });
 
 
+
+
+
+
 const goToNext = () => {
   if (window.innerWidth < 1025) {
     document.querySelector('.swiper-button-next').click();
@@ -54,10 +58,20 @@ const goToNext = () => {
 const { data: posts } = await useWpApi().getPost(params.slug as string);
 console.log(posts)
 const post = posts.value[0];
+
+// Computed property for counting slides
+const slideCount = computed(() => post.acf.gallery.length);
+
+// Computed property for determining the class
+const swiperWrapperClass = computed(() => {
+  return slideCount.value === 1 ? 'single-slide' : '';
+});
+
+
 </script>
 <template>
 
-<div>
+<div :class="swiperWrapperClass">
 <Swiper @swiper="swiper" @click="goToNext" 
     :modules="[SwiperMousewheel, SwiperNavigation, SwiperFreeMode]"
     :slides-per-view="1"
@@ -101,6 +115,15 @@ const post = posts.value[0];
   background-color: #fff !important;
 }
 }
+
+.single-slide .swiper-slide {
+  width: 100vw !important;
+}
+
+.single-slide .swiper-slide img{
+  object-fit: contain;
+}
+
 
 /* "page" is hardcoded in nuxt3 page transitions atm */
 .page-enter-from {

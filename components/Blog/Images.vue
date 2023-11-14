@@ -90,7 +90,9 @@ const swiperWrapperClass = computed(() => {
     }"
   >
     <SwiperSlide v-for="image in post.acf.gallery" :key="image.gallery_item">
-      <img  class="still-loading" loading="lazy" :height="image.gallery_item.height" :width="image.gallery_item.width" :src="image.gallery_item.sizes.large" :alt="image.alt">
+      <div class="video-wrapper" v-if="image.gallery_vimeo" v-html="image.gallery_vimeo"></div>
+
+      <img v-else  class="still-loading" loading="lazy" :height="image.gallery_item.height" :width="image.gallery_item.width" :src="image.gallery_item.sizes.large" :alt="image.alt">
     </SwiperSlide>
   </Swiper>
 
@@ -120,8 +122,20 @@ const swiperWrapperClass = computed(() => {
   width: 100vw !important;
 }
 
+.video-wrapper {
+  height: 100%;
+    display: flex;
+    align-items: center;
+}
+
 .single-slide .swiper-slide img{
   object-fit: contain;
+}
+
+iframe {
+  width: 100%;
+    aspect-ratio: 16/9;
+    height: 100%;
 }
 
 

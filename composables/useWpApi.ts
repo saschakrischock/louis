@@ -10,7 +10,7 @@ export function useWpApi() {
   const WP_URL: string = config.wpUrl;
 
   const get = async <T>(endpoint: string) => {
-    return useFetch<T>(`https://www.louisgibson.co.uk/wp-json/wp/v2/${endpoint}`);
+    return useFetch<T>(`https://www.saschakrischock.com/dev/wordpress/louis/wp-json/wp/v2/${endpoint}`);
   };
 
   const getPosts = async (
@@ -36,7 +36,6 @@ export function useWpApi() {
     return get<Post[]>(query);
   };
 
-   
   const getPost = async (slug: string) => {
     return get<Post>(`project?slug=${slug}&_embed=1`);
   };

@@ -36,6 +36,7 @@ export function useWpApi() {
     return get<Post[]>(query);
   };
 
+   
   const getPost = async (slug: string) => {
     return get<Post>(`project?slug=${slug}&_embed=1`);
   };

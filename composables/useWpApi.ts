@@ -9,8 +9,20 @@ export function useWpApi() {
   const config = useRuntimeConfig();
   const WP_URL: string = config.wpUrl;
 
+  console.log("useWpApi: WP_URL loaded:", WP_URL); // Log the WordPress URL at load time
+
   const get = async <T>(endpoint: string) => {
-    return useFetch<T>(`https://www.louisgibson.co.uk/wp-json/wp/v2/${endpoint}`);
+    const url = `https://www.louisgibson.co.uk/wp-json/wp/v2/${endpoint}`;
+    console.log("useWpApi: Preparing to fetch data from:", url);
+
+    try {
+      const response = await useFetch<T>(url);
+      console.log("useWpApi: Fetch successful for endpoint:", endpoint, "Response:", response);
+      return response;
+    } catch (error) {
+      console.error("useWpApi: Fetch error for endpoint:", endpoint, "Error:", error);
+      throw error;
+    }
   };
 
   const getPosts = async (

@@ -12,7 +12,7 @@ export default defineNuxtConfig({
       titleTemplate: "%s",
       meta: [{ name: "description", content: "Louis" }],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        { rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }
         // Replace 'favicon.ico' with the actual filename of your favicon if it's different
       ]
     },

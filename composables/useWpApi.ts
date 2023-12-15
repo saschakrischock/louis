@@ -12,7 +12,7 @@ export function useWpApi() {
   console.log("useWpApi: WP_URL loaded:", WP_URL); // Log the WordPress URL at load time
 
   const get = async <T>(endpoint: string) => {
-    const url = `http://backend.louisgibson.co.uk/wp-json/wp/v2/${endpoint}`;
+    const url = `https://backend.louisgibson.co.uk/wp-json/wp/v2/${endpoint}`;
     console.log("useWpApi: Preparing to fetch data from:", url);
 
     try {

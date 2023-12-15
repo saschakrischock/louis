@@ -1,10 +1,12 @@
 <template>
   <div >
+    <h1>Under Construction</h1>
+    <!--
     <RouterView>
     <MenuTop  />
     <MenuTopMobile class="hide-on-desktop" />
   </RouterView>
-    <NuxtPage />
+    <NuxtPage />-->
   </div>
 </template>
 
@@ -36,6 +38,14 @@ html, body {
 
 .hide-on-desktop {
   display: none;
+}
+
+h1 {
+  height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 @media only screen and (max-width: 768px) {

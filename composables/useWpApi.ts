@@ -10,7 +10,7 @@ export function useWpApi() {
   const WP_URL: string = config.wpUrl;
 
   const get = async <T>(endpoint: string) => {
-    return useFetch<T>(`http://www.louisgibson.co.uk/wp-json/wp/v2/${endpoint}`);
+    return useFetch<T>(`https://www.louisgibson.co.uk/wp-json/wp/v2/${endpoint}`);
   };
 
   const getPosts = async (

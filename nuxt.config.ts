@@ -8,9 +8,9 @@ export default defineNuxtConfig({
     head: {
       charset: "utf-16",
       viewport: 'width=device-width, initial-scale=1',
-      title: "Louis",
+      title: "Louis Gibson",
       titleTemplate: "%s",
-      meta: [{ name: "description", content: "Louis" }],
+      meta: [{ name: "description", content: "Louis Gibson" }],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }
         // Replace 'favicon.ico' with the actual filename of your favicon if it's different

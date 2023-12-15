@@ -9,18 +9,21 @@ export function useWpApi() {
   const config = useRuntimeConfig();
   const WP_URL: string = config.wpUrl;
 
-  console.log("WP_URL:", WP_URL); // Log the WordPress URL
-
   const get = async <T>(endpoint: string) => {
-    console.log("Making GET request to:", endpoint);
-    try {
-      const response = await useFetch<T>(`https://www.louisgibson.co.uk/wp-json/wp/v2/${endpoint}`);
-      console.log("GET request successful:", response);
-      return response;
-    } catch (error) {
-      console.error("Error in GET request:", error);
-      throw error; // Rethrow the error for further handling
+    return useFetch<T>(`https://www.louisgibson.co.uk/wp-json/wp/v2/${endpoint}`);
+  };
+
+  const getPosts = async (
+    category?: number,
+    page: number = 1,
+    perPgae: number = 100,
+    fields: string = "author,id,excerpt,title,link,slug,date,acf"
+  ) => {
+    let query: string = `project?page=${page}&per_page=${perPgae}&_embed=1`;
+    if (category) {
+      query += `&categories=${category}`;
     }
+    return get<Post[]>(query);
   };
 
   const getACF = async (

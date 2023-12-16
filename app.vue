@@ -1,12 +1,12 @@
 <template>
   <div >
-    <h1>Under Construction</h1>
-    <!--
+
+   
     <RouterView>
     <MenuTop  />
     <MenuTopMobile class="hide-on-desktop" />
   </RouterView>
-    <NuxtPage />-->
+    <NuxtPage />
 </div>
 </template>
 

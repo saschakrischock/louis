@@ -31,7 +31,7 @@ export function useWpApi() {
     perPgae: number = 100,
     fields: string = "author,id,excerpt,title,link,slug,date,acf"
   ) => {
-    let query: string = `project?page=${page}&per_page=${perPgae}&_embed=1`;
+    let query: string = `project?page=${page}&per_page=${perPgae}&_embed=1&sort_order=menu_order`;
     if (category) {
       query += `&categories=${category}`;
     }

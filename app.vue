@@ -7,7 +7,7 @@
     <MenuTopMobile class="hide-on-desktop" />
   </RouterView>
     <NuxtPage />-->
-  </div>
+</div>
 </template>
 
 <script>

@@ -119,8 +119,14 @@ body{
     width: 100vw !important;
   }
 
-  .swiper {
+  #__nuxt .swiper {
+    overflow-x: hidden !important;
     width: 100vw !important;
+  }
+
+  .swiper-button-prev, .swiper-button-next {
+    position: fixed !important;
+    bottom: 0.25rem !important;
   }
 
   .swiper img {

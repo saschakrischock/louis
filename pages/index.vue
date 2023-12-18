@@ -49,8 +49,8 @@ console.log(blogs);
          </div>
 
          <div class="footer-right">
-          <a class="m-4" target="_blank" href="">DESIGNED BY KATIE LING</a>
-          <a target="_blank" href="">DEVELOPED BY SASCHA KRISCHOCK</a>
+          <a class="m-4" target="_blank" href="https://katieling.net/">DESIGNED BY KATIE LING</a>
+          <a target="_blank" href="https://www.saschakrischock.com/">DEVELOPED BY SASCHA KRISCHOCK</a>
          </div>
           </div>
     <!-- Blog Section Ends  -->

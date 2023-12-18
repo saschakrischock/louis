@@ -1,21 +1,31 @@
 <script setup lang="ts">
-import { onBeforeRouteLeave } from "vue-router"
+import { onBeforeRouteLeave, useRoute } from "vue-router";
+import { onMounted, watch } from 'vue';
 
-onBeforeRouteLeave(() => {
+// This function ensures safe DOM manipulation
+const removeActiveNav = () => {
+  const navElement = document.querySelector('.nav-mobile');
+  if (navElement) {
+    navElement.classList.remove('active-nav');
+  }
+}
+
+onMounted(() => {
+  // Now we are sure it's client-side
+  const route = useRoute();
+  watch(route, () => {
     setTimeout(() => {
-      document.querySelector('.nav-mobile').classList.remove('active-nav');
-    }, 2000) // adjust the delay as needed
-})
+      removeActiveNav();
+    }, 700);
+  });
 
-
-
-  /*watch: {
-    $route(to, from) {
-      
-      document.querySelector('.nav-mobile').classList.remove('active');
-    },
-  },*/
+  onBeforeRouteLeave(() => {
+    // Add any additional logic for route leave here
+  });
+});
 </script>
+
+
 <template>
   <nav class=" text-black z-30 fixed top-0 w-full h-full flex flex-col justify-center nav-mobile">
 

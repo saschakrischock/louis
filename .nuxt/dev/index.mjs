@@ -21,7 +21,7 @@ import unstorage_47drivers_47fs from 'file:///Applications/MAMP/htdocs/nuxt3_wp_
 import defu from 'file:///Applications/MAMP/htdocs/nuxt3_wp_yt/nuxt3-wp-blog/node_modules/defu/dist/defu.mjs';
 import { toRouteMatcher, createRouter } from 'file:///Applications/MAMP/htdocs/nuxt3_wp_yt/nuxt3-wp-blog/node_modules/nitropack/node_modules/radix3/dist/index.mjs';
 
-const _runtimeConfig = {"app":{"baseURL":"/","buildAssetsDir":"/_nuxt/","cdnURL":""},"nitro":{"routeRules":{"/__nuxt_error":{"cache":false}},"envPrefix":"NUXT_"},"public":{"wpUri":"https://www.saschakrischock.com/dev/wordpress/cooltura"}};
+const _runtimeConfig = {"app":{"baseURL":"/","buildAssetsDir":"/_nuxt/","cdnURL":""},"nitro":{"routeRules":{"/__nuxt_error":{"cache":false}},"envPrefix":"NUXT_"},"public":{"wpUri":"https://www.louisgibson.co.uk/"}};
 const ENV_PREFIX = "NITRO_";
 const ENV_PREFIX_ALT = _runtimeConfig.nitro.envPrefix ?? process.env.NITRO_ENV_PREFIX ?? "_";
 const getEnv = (key) => {

@@ -181,7 +181,7 @@ h3 {
 
 
 .sandroglobalstorewindows {
-  margin-bottom: 40rem !important;
+  margin-bottom: 53rem !important;
   margin-top: 10vh;
 }
 

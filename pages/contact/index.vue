@@ -63,7 +63,7 @@ const { data: blogs, refresh, error } = await useWpApi().getPosts();
   
   <style scoped>
   .image {
-    font-size: 30px;
+    font-size: 1rem;
     margin: 0 10px;
   }
 
@@ -73,7 +73,7 @@ const { data: blogs, refresh, error } = await useWpApi().getPosts();
   }
 
   span {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-left: 0.2rem;
     margin-right: 0.2rem;
   }

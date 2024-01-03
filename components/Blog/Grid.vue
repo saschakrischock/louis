@@ -288,7 +288,7 @@ opacity: 1;
 
   #__nuxt .grid__content {
     opacity: 1 !important;
-    font-size: 12px;
+    font-size: 1rem;
     bottom: inherit !important;
     padding-left: 0 !important;
     margin-top: 0.5rem !important;

@@ -15,7 +15,7 @@ console.log(blogs);
 
 
     <!-- Blog Section Starts -->
-    <div class="blogs">
+    <div class="blogs mt-12">
 
 
     <div class="title-fixed text-center hidden lg:block hidden">

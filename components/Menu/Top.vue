@@ -56,7 +56,7 @@ methods: {
 @media only screen and (max-width: 768px) {
 
   .top-bar {
-    background-color: transparent;
+    background-color: #fff !important;
   }
 
   .hide-on-desktop {

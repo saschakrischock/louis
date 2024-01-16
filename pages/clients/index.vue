@@ -51,14 +51,14 @@ const { data: cl } = await useWpApi().getClients();
         :src=" isHover " data-not-lazy>
         <div class="text-center w-full list flex justify-center block mt-8 mb-8 flex-col">
           <div v-for="client in cl[0].acf.clients" :key="client.client">
-                <NuxtLink  v-on:mouseout="updateValue(title = 'data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%3E%3C%2Fsvg%3E')"  v-on:mouseover="updateValue(title = client.client_image.sizes.medium_large)"
+                <a target="_blank"  v-on:mouseout="updateValue(title = 'data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%3E%3C%2Fsvg%3E')"  v-on:mouseover="updateValue(title = client.client_image.sizes.medium_large)"
                 class="mr-0  relative" 
-                :to="client.client_link
+                :href="client.client_link
                 ">
                 {{client.client}}
        
 
-                </NuxtLink>
+          </a>
             
 
              

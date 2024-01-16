@@ -30,7 +30,8 @@ console.log(blogs);
             v-for="blog in blogs"
             :key="blog.id"
             :title="blog.title.rendered"
-
+            :width="blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.large?.width || blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.full?.width"
+            :height="blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.large?.height || blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.full?.height"
             :image="blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.large?.source_url || blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.full?.source_url"
             :slug="blog.slug"
             :subtitle="blog.acf.subtitle"

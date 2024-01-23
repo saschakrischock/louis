@@ -45,12 +45,12 @@ console.log(blogs);
     
     <div class="footer p-4 relative bottom-0 w-full bg-white flex justify-between">
          <div class="footer-left">
-          LOIS GIBSON 2023©
+          Louis Gibson {{ new Date().getFullYear() }}©
          </div>
 
          <div class="footer-right">
-          <a class="m-4" target="_blank" href="https://katieling.net/">DESIGNED BY KATIE LING</a>
-          <a target="_blank" href="https://www.saschakrischock.com/">DEVELOPED BY SASCHA KRISCHOCK</a>
+          <a class="m-4" target="_blank" href="https://katieling.net/">Designed by Katie Ling</a>
+          <a target="_blank" href="https://www.saschakrischock.com/">Developed by Sascha Krischock</a>
          </div>
           </div>
     <!-- Blog Section Ends  -->

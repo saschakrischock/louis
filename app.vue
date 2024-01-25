@@ -32,6 +32,7 @@ export default {
 
 <style scoped>
 html, body {
+  background-color: #fff;
   widows: 100vw;
   overflow-x: hidden;
 }

@@ -29,7 +29,7 @@ onMounted(() => {
 <template>
   <nav class=" text-black z-30 fixed top-0 w-full h-full flex flex-col justify-center nav-mobile">
 
-      <ul class="nav uppercase flex flex-col">
+      <ul class="nav  flex flex-col">
         <li>
           <NuxtLink to="/">Gallery</NuxtLink>
         </li>

@@ -171,8 +171,12 @@ h3 {
   margin-left: -10vw !important;
 }
 
-.pamxpumacampaign .grid__content, .byredofragrancecampaign .grid__content {
+.pamxpumacampaign .grid__content {
   margin-left: -10vw !important;
+}
+
+.celestetoloveamansingleartwork {
+  margin-left: 10rem !important;
 }
 
 .flowerstogetherpartmetzracine {

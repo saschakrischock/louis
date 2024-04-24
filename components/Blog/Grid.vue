@@ -98,7 +98,8 @@ export default {
       <p
         class="grid__content-excerpt flex flex-col text-sm text-clip  overflow-hidden ..."
       >
-        <span v-if="title" class="ue font-black">{{ title }}</span>        <span  v-if="subtitle" class="">{{ subtitle }}</span>
+        
+      <span v-html="title" v-if="title" class="ue font-black"></span>        <span  v-if="subtitle" class="">{{ subtitle }}</span>
       </p>
     </div>
       </NuxtLink>

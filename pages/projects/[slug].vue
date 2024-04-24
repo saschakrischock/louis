@@ -64,7 +64,7 @@ const post = posts.value[0];
   <div class="single-project-top p-4 bg-transparent">
 
 
-    <div class="hide-mobile"><span class="capitalize font-black mr-2">{{ post.title.rendered }}</span> <span v-if="post.acf.subtitle"> {{ post.acf.subtitle }}</span></div>
+    <div class="hide-mobile"><span v-html="post.title.rendered" class="capitalize font-black mr-2"></span> <span v-if="post.acf.subtitle"> {{ post.acf.subtitle }}</span></div>
 
     <!--<div class="click" @click="goToPrev">CLOSE</div>-->
   </div>
@@ -82,7 +82,7 @@ const post = posts.value[0];
 
 
       <div class="single-project-bottom p-4">
-        <div class="hide-desktop"><span class="capitalize font-black mr-2">{{ post.title.rendered }}</span> <soan v-if="post.acf.subtitle"> {{ post.acf.subtitle }}</soan></div>
+        <div class="hide-desktop"><span v-html="post.title.rendered" class="capitalize font-black mr-2"></span> <soan v-if="post.acf.subtitle"> {{ post.acf.subtitle }}</soan></div>
         <div class="scroll">
 
 

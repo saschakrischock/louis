@@ -181,6 +181,11 @@ body{
   min-height: 1.5rem;
 }
 
+@media (max-width: 1024px) {
+  .swiper-button-next:before {
+    margin-top: 4px;
+  }
+}
 #scrollButton {
   pointer-events: none;
 }

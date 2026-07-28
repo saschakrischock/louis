@@ -68,6 +68,11 @@ export function useWpApi() {
     return get<Post[]>(query);
   };
 
+  const getSettings = async () => {
+    const url = `https://backend.louisgibson.co.uk/wp-json/site/v1/settings`;
+    return useFetch<{ make_latest_project_more_present: boolean }>(url);
+  };
+
   return {
     get,
     getPosts,
@@ -75,6 +80,7 @@ export function useWpApi() {
     getCatgories,
     getCatgory,
     getACF,
-    getClients
+    getClients,
+    getSettings
   };
 };

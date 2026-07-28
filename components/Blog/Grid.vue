@@ -23,6 +23,10 @@ export default {
     subtitle: {
       type: String,
     },
+    featured: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -75,7 +79,7 @@ export default {
 
 
 <div  :width="width"
-        :height="height"    @mouseover="logTitle"  @mouseleave="hideTitle" :class="slugsimple"  class="grid__item__inner rellax" >
+        :height="height"    @mouseover="logTitle"  @mouseleave="hideTitle" :class="[slugsimple, { 'grid__item__inner--featured': featured }]"  class="grid__item__inner rellax" >
 
 
 
@@ -362,5 +366,62 @@ opacity: 1;
   width: 100%;
   height: auto;
   /*position: absolute;*/
+}
+
+/* The site's own layout already collapses everything to a single
+   90vw column at <=1024px (see the max-width:1024px block above), so
+   all of this two-column featured/row-mate treatment is desktop-only
+   — scoping it to min-width:1025px keeps it from leaking its vw
+   margins into that stacked mobile/tablet layout. */
+@media screen and (min-width: 1025px) {
+  .grid__item__inner--featured {
+    width: 40vw !important;
+    /* Negative margin-bottom (not a negative margin-top on the next
+       tile — that pulled a later tile up in front of an earlier one
+       and broke reading order) trims the blank space this row leaves
+       behind, so the next row peeks into view sooner. Safe here
+       because it only shortens *this* tile's own box, it doesn't
+       reposition any sibling. */
+    margin-bottom: -8vw !important;
+    vertical-align: top;
+  }
+
+  /* Keep the featured tile's row-mate small (doesn't compete with the
+     hero), offset with its own breathing room instead of sitting flush
+     against it, and reserve the rest of the row's width as invisible
+     margin so a third tile still can't squeeze onto the same line
+     (40vw featured + 7vw gap + 25vw visible + 28vw margin = 100vw, no
+     room left). Also top-align just this pair so the tall featured
+     tile doesn't drag it down via baseline alignment — the rest of the
+     grid keeps its original staggered rhythm. */
+  .grid__item__inner--featured + .grid__item__inner {
+    width: 25vw !important;
+    margin-left: 16vw !important;
+    margin-top: 6vw !important;
+    margin-right: 19vw !important;
+    vertical-align: top;
+  }
+
+  /* 4th tile (the one right after the featured row-mate): pull it up
+     to tighten the gap left by the featured row, matching the same
+     "peek in" treatment. Scoped to only fire when item 1 is actually
+     featured, so it doesn't affect the normal grid rhythm otherwise. */
+  .grid__item__inner--featured + .grid__item__inner + .grid__item__inner + .grid__item__inner {
+    margin-top: -15vw !important;
+  }
+}
+
+/* Portrait / mobile / tablet: fall back to the same plain full-width
+   stacked tile every other item on the grid already uses at this
+   breakpoint, instead of leaving desktop margins to bleed through. */
+@media screen and (max-width: 1024px) {
+  .grid__item__inner--featured {
+    width: 90vw !important;
+  }
+
+  .grid__item__inner--featured + .grid__item__inner {
+    width: 90vw !important;
+    margin: 0 !important;
+  }
 }
 </style>

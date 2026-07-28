@@ -92,7 +92,7 @@ const swiperWrapperClass = computed(() => {
     <SwiperSlide v-for="image in post.acf.gallery" :key="image.gallery_item">
       <div class="video-wrapper" v-if="image.gallery_vimeo" v-html="image.gallery_vimeo"></div>
 
-      <img v-else  class="still-loading" loading="lazy" :height="image.gallery_item.height" :width="image.gallery_item.width" :src="image.gallery_item.sizes.large" :alt="image.alt">
+      <img v-else  class="still-loading" loading="lazy" :height="image.gallery_item.height" :width="image.gallery_item.width" :src="image.gallery_item.url || image.gallery_item.sizes['2048x2048'] || image.gallery_item.sizes.large" :alt="image.alt">
     </SwiperSlide>
   </Swiper>
 

@@ -6,6 +6,9 @@ import { useWpApi } from '~~/composables/useWpApi';
 
 const { data: blogs, refresh, error } = await useWpApi().getPosts();
 console.log(blogs);
+
+const { data: settings } = await useWpApi().getSettings();
+const makeLatestProjectMorePresent = computed(() => !!settings.value?.make_latest_project_more_present);
 </script>
 
 
@@ -27,14 +30,15 @@ console.log(blogs);
       <div>
         <div class="gallery__grid__off rellax">
           <BlogGrid class="p-4"
-            v-for="blog in blogs"
+            v-for="(blog, index) in blogs"
             :key="blog.id"
             :title="blog.title.rendered"
-            :width="blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.large?.width || blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.full?.width"
-            :height="blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.large?.height || blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.full?.height"
-            :image="blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.large?.source_url || blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.full?.source_url"
+            :width="blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.full?.width || blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.large?.width"
+            :height="blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.full?.height || blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.large?.height"
+            :image="blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.full?.source_url || blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.large?.source_url"
             :slug="blog.slug"
             :subtitle="blog.acf.subtitle"
+            :featured="index === 0 && makeLatestProjectMorePresent"
           ></BlogGrid>
 
 

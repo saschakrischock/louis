@@ -216,7 +216,13 @@ body{
 html, body {
   background-color: #fff;
     overscroll-behavior-y: none;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/legacy Edge */
   }
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/modern Edge */
+}
 
 
 

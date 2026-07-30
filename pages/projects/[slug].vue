@@ -78,7 +78,7 @@ const post = posts.value[0];
 
       <!-- Blog Image  -->
 
-      <BlogGallery/>
+      <BlogGallery :post="post"/>
 
 
       <div class="single-project-bottom p-4">

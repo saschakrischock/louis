@@ -4,6 +4,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 export default {
+  props: {
+    post: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
       items: [], // Your gallery items data
@@ -77,40 +83,79 @@ export default {
   },
 
   mounted() {
-    setTimeout(() => {
-      this.windowHeight = window.innerHeight || document.documentElement.clientHeight;
-      this.fullHeight = this.$refs.gallery.offsetWidth;
-      this.scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
-      
-      if (window.screen.width > 768) {
-        window.addEventListener('scroll', this.handleScroll);
+    // .gallery/.swiper both collapse to 0 width (their children are
+    // position:absolute, which takes them out of the flow that would
+    // otherwise let a parent shrink-wrap around them), so measuring
+    // *them* for the pin distance always produced ~0. The actual
+    // total width of all slides side-by-side lives on Swiper's own
+    // wrapper element, via scrollWidth (which reflects real rendered
+    // content extent regardless of the collapsed ancestor boxes).
+    //
+    // Swiper itself finishes sizing that wrapper asynchronously (its
+    // own post-mount layout pass), on a timeline that isn't tied to
+    // Vue's $nextTick or to image load events — waiting on either of
+    // those still raced it. requestAnimationFrame and ResizeObserver
+    // both don't work either: their callback delivery is tied to the
+    // browser's paint/rendering cycle, which is throttled or paused
+    // for backgrounded/non-visible tabs — a user who opens a project
+    // in a background tab could wait on either forever. Plain
+    // setTimeout polling runs on the JS timer queue instead, which
+    // keeps ticking regardless of tab visibility, with a hard attempt
+    // cap so this can never hang indefinitely either way.
+    const waitForStableWidth = () => new Promise((resolve) => {
+      const wrapper = this.$refs.gallery.querySelector('.swiper-wrapper');
+      if (!wrapper) {
+        resolve(this.$refs.gallery.offsetWidth);
+        return;
       }
 
-      this.$nextTick(() => {
-        const mastheadWidth = this.$refs.gallery.offsetWidth;
-
-        if (window.screen.width > 768) {
-          const scroller = ScrollTrigger.create({
-            animation: gsap.to(this.$refs.gallery, {
-              x: function () {
-                return -(mastheadWidth - window.innerWidth);
-              },
-              ease: 'none',
-            }),
-            trigger: this.$refs.gallery,
-            end: function () {
-              console.log("stranger")
-              return mastheadWidth;
-            },
-            scrub: true,
-            pin: true,
-            //markers: true,
-            anticipatePin: 1,
-            invalidateOnRefresh: true
-          });
+      let lastWidth = -1;
+      let stableChecks = 0;
+      let attempts = 0;
+      const check = () => {
+        attempts++;
+        const width = wrapper.scrollWidth;
+        stableChecks = (width > 0 && width === lastWidth) ? stableChecks + 1 : 0;
+        lastWidth = width;
+        if (stableChecks >= 2 || attempts > 50) {
+          resolve(width);
+        } else {
+          setTimeout(check, 100);
         }
-      });
-    }, 250);
+      };
+      setTimeout(check, 100);
+    });
+
+    this.windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    this.scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+
+    if (window.screen.width > 768) {
+      window.addEventListener('scroll', this.handleScroll);
+    }
+
+    waitForStableWidth().then((mastheadWidth) => {
+      this.fullHeight = mastheadWidth;
+
+      if (window.screen.width > 768) {
+        const scroller = ScrollTrigger.create({
+          animation: gsap.to(this.$refs.gallery, {
+            x: function () {
+              return -(mastheadWidth - window.innerWidth);
+            },
+            ease: 'none',
+          }),
+          trigger: this.$refs.gallery,
+          end: function () {
+            return mastheadWidth;
+          },
+          scrub: true,
+          pin: true,
+          //markers: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true
+        });
+      }
+    });
   }
 }
 </script>
@@ -120,10 +165,10 @@ export default {
 
 
 <template>
-  <div>
+  <div ref="gallery" class="gallery">
 
 
-    <BlogImages/>  
+    <BlogImages :post="post"/>
 
 
 </div>
@@ -144,7 +189,13 @@ export default {
 
 
 .gallery {
-  position: absolute;
+  /* relative (not absolute): still gives .swiper's position:absolute;
+     height:100% a definite containing block to resolve against, but
+     keeps .gallery itself in normal document flow. With `absolute`
+     here, GSAP's pin-spacer (which mirrors the pinned element's own
+     position type) also became `absolute`, taking it out of flow
+     entirely so its height never actually made the page scrollable. */
+  position: relative;
   display: flex;
   top: 0;
   height: 100vh;

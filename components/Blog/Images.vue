@@ -55,9 +55,8 @@ const goToNext = () => {
 
 }
 
-const { data: posts } = await useWpApi().getPost(params.slug as string);
-console.log(posts)
-const post = posts.value[0];
+const props = defineProps<{ post: any }>();
+const post = props.post;
 
 // Computed property for counting slides
 const slideCount = computed(() => post.acf.gallery.length);

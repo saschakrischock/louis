@@ -21,12 +21,20 @@ export default {
       scrollInterval: null, // Added scrollInterval variable
       scrolling: false, // Added scrolling variable
       scrollBackInterval: null, // Added scrollBackInterval variable
-      scrollingBack: false // Added scrollingBack variable
+      scrollingBack: false, // Added scrollingBack variable
+      scrollTrigger: null // GSAP ScrollTrigger instance, killed on unmount
     }
   },
 
-  beforeDestroy() {
+  // Vue 3 hook name (`beforeDestroy` is the Vue 2 name and never
+  // fires here, so the listener and the pin used to leak into the
+  // next page and could fire the "go back" check on the homepage).
+  beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
+    if (this.scrollTrigger) {
+      this.scrollTrigger.kill();
+      this.scrollTrigger = null;
+    }
   },
 
   onAfterLeave() {
@@ -41,7 +49,13 @@ export default {
       console.log(this.scrollPosition)
       console.log(this.fullHeight)
 
-      if (this.scrollPosition == this.fullHeight) {
+      // Only leave once the gallery width is actually known and the
+      // user has scrolled to the end of it. With fullHeight still 0
+      // (not measured yet, or measurement failed) any scroll event at
+      // the top of the page would otherwise satisfy `0 == 0` and bounce
+      // the visitor straight back out of the project.
+      if (this.fullHeight > 0 && this.scrollPosition >= this.fullHeight) {
+        window.removeEventListener('scroll', this.handleScroll);
         window.history.length > 1 ? useRouter().go(-1) : useRouter().push('/')
       }
 
@@ -129,15 +143,15 @@ export default {
     this.windowHeight = window.innerHeight || document.documentElement.clientHeight;
     this.scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
 
-    if (window.screen.width > 768) {
-      window.addEventListener('scroll', this.handleScroll);
-    }
-
     waitForStableWidth().then((mastheadWidth) => {
       this.fullHeight = mastheadWidth;
 
       if (window.screen.width > 768) {
-        const scroller = ScrollTrigger.create({
+        // Attach the end-of-gallery check only now that fullHeight is
+        // a real measurement (see handleScroll).
+        window.addEventListener('scroll', this.handleScroll);
+
+        this.scrollTrigger = ScrollTrigger.create({
           animation: gsap.to(this.$refs.gallery, {
             x: function () {
               return -(mastheadWidth - window.innerWidth);

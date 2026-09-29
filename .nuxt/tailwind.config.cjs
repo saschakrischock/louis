@@ -6334,15 +6334,15 @@ module.exports = {
   "content": {
     "relative": false,
     "files": [
-      "/Applications/MAMP/htdocs/nuxt3_wp_yt/nuxt3-wp-blog/components/**/*.{vue,js,ts}",
-      "/Applications/MAMP/htdocs/nuxt3_wp_yt/nuxt3-wp-blog/layouts/**/*.vue",
-      "/Applications/MAMP/htdocs/nuxt3_wp_yt/nuxt3-wp-blog/pages/**/*.vue",
-      "/Applications/MAMP/htdocs/nuxt3_wp_yt/nuxt3-wp-blog/composables/**/*.{js,ts}",
-      "/Applications/MAMP/htdocs/nuxt3_wp_yt/nuxt3-wp-blog/plugins/**/*.{js,ts}",
-      "/Applications/MAMP/htdocs/nuxt3_wp_yt/nuxt3-wp-blog/App.{js,ts,vue}",
-      "/Applications/MAMP/htdocs/nuxt3_wp_yt/nuxt3-wp-blog/app.{js,ts,vue}",
-      "/Applications/MAMP/htdocs/nuxt3_wp_yt/nuxt3-wp-blog/Error.{js,ts,vue}",
-      "/Applications/MAMP/htdocs/nuxt3_wp_yt/nuxt3-wp-blog/error.{js,ts,vue}"
+      "/Users/saschakrischock/Desktop/Web/Dev/2026/lg/louis/components/**/*.{vue,js,ts}",
+      "/Users/saschakrischock/Desktop/Web/Dev/2026/lg/louis/layouts/**/*.vue",
+      "/Users/saschakrischock/Desktop/Web/Dev/2026/lg/louis/pages/**/*.vue",
+      "/Users/saschakrischock/Desktop/Web/Dev/2026/lg/louis/composables/**/*.{js,ts}",
+      "/Users/saschakrischock/Desktop/Web/Dev/2026/lg/louis/plugins/**/*.{js,ts}",
+      "/Users/saschakrischock/Desktop/Web/Dev/2026/lg/louis/App.{js,ts,vue}",
+      "/Users/saschakrischock/Desktop/Web/Dev/2026/lg/louis/app.{js,ts,vue}",
+      "/Users/saschakrischock/Desktop/Web/Dev/2026/lg/louis/Error.{js,ts,vue}",
+      "/Users/saschakrischock/Desktop/Web/Dev/2026/lg/louis/error.{js,ts,vue}"
     ],
     "extract": {},
     "transform": {}

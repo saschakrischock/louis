@@ -1,5 +1,5 @@
 
-import { defuFn } from '/Applications/MAMP/htdocs/nuxt3_wp_yt/nuxt3-wp-blog/node_modules/defu/dist/defu.mjs'
+import { defuFn } from '/Users/saschakrischock/Desktop/Web/Dev/2026/lg/louis/node_modules/defu/dist/defu.mjs'
 
 const inlineConfig = {}
 

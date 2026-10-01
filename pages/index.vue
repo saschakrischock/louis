@@ -9,6 +9,23 @@ console.log(blogs);
 
 const { data: settings } = await useWpApi().getSettings();
 const makeLatestProjectMorePresent = computed(() => !!settings.value?.make_latest_project_more_present);
+
+// Resolve the featured image for a grid tile. Prefer the generated
+// "full" or "large" size, but fall back to the original upload (and
+// its own dimensions) when WordPress hasn't generated any sizes, e.g.
+// when the server's PHP image library (GD/Imagick) is missing so
+// media_details.sizes comes back empty. Without this fallback such a
+// post renders as an empty tile.
+const featuredImage = (blog: any) => {
+  const media = blog?._embedded?.['wp:featuredmedia']?.[0];
+  const details = media?.media_details;
+  const size = details?.sizes?.full || details?.sizes?.large;
+  return {
+    src: size?.source_url || media?.source_url,
+    width: size?.width || details?.width,
+    height: size?.height || details?.height,
+  };
+};
 </script>
 
 
@@ -33,9 +50,9 @@ const makeLatestProjectMorePresent = computed(() => !!settings.value?.make_lates
             v-for="(blog, index) in blogs"
             :key="blog.id"
             :title="blog.title.rendered"
-            :width="blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.full?.width || blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.large?.width"
-            :height="blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.full?.height || blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.large?.height"
-            :image="blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.full?.source_url || blog._embedded['wp:featuredmedia'][0]?.media_details?.sizes?.large?.source_url"
+            :width="featuredImage(blog).width"
+            :height="featuredImage(blog).height"
+            :image="featuredImage(blog).src"
             :slug="blog.slug"
             :subtitle="blog.acf.subtitle"
             :featured="index === 0 && makeLatestProjectMorePresent"
